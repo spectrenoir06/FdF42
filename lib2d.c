@@ -6,7 +6,7 @@
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/24 10:25:22 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/24 12:59:59 by adoussau         ###   ########.fr       */
+/*   Updated: 2014/11/24 13:47:20 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int		main()
 	while (1)
 	{
 		//ft_putsquare(mlx, win, 10, 10, 100, 200, 255<<16);
-		ft_putline(mlx , win , 10, 10, 500, 200, 255);
-		ft_putline(mlx , win , 10, 10, 300, 300, 255);
+		ft_putline(mlx , win , 50, 0, 100, 100, 255);
+		ft_putline(mlx , win , 100, 100, 300, 300, 255);
 	}
 }
