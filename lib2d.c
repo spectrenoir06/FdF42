@@ -6,7 +6,7 @@
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/24 10:25:22 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/24 19:30:13 by adoussau         ###   ########.fr       */
+/*   Updated: 2014/11/24 20:11:25 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int		get_color(char r, char g, char b)
 	int		i;
 
 	i = r;
-	i << 4;
+	i << 8;
 	i += g;
-	i << 4;
+	i << 8;
 	i += b;
 	return (i);
 }
@@ -66,7 +66,7 @@ void	ft_putpixel(t_env env, t_point p, t_color c)
 	mlx_pixel_put(env.mlx, env.win, p.x, p.y, colortoint(c));
 }
 
-void ft_line(t_env env, t_point p1, t_point p2, t_color c)
+void ft_putline(t_env env, t_point p1, t_point p2, t_color c)
 {
 	int		dx;
 	int		dy;
@@ -137,8 +137,8 @@ int		main()
 
 	while (1)
 	{
-		ft_line(env, p1, p2, blue);
-		ft_line(env, p2, p3, blue);
+		ft_putline(env, p1, p2, blue);
+		ft_putline(env, p2, p3, blue);
 		sleep(1);
 		//line(env, p);
 	}
