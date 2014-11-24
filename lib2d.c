@@ -6,20 +6,17 @@
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/24 10:25:22 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/24 12:59:59 by adoussau         ###   ########.fr       */
+/*   Updated: 2014/11/24 17:16:27 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-typedef struct s_color
-{
-	char	r;
-	char	g;
-	char	b;
-}	t_color;
+#include "lib2d.h"
 
 int		colortoint(t_color c)
 {
@@ -64,46 +61,58 @@ void	ft_putsquare(void *mlx, void *win, int x, int y, int lx, int ly, int c)
 	}
 }
 
-void	ft_putpixel(void *mlx, void *win, int x, int y, char r, char g, char b)
+void	ft_putpixel(t_env env, t_point p, t_color c)
 {
-	int i;
-	
-	i = r;
-	i = i << 8;
-	i += g;
-	i = i << 8;
-	i += b;
-	mlx_pixel_put(mlx, win, x, y, get_color(r, g, b));
+	mlx_pixel_put(env.mlx, env.win, p.x, p.y, colortoint(c));
 }
 
-void	ft_putline(void *mlx, void *wi, int x1, int y1, int x2 ,int y2 , int c)
+void ft_line(t_env env, t_point p1, t_point p2, int c)
 {
-	float	x;
-	float	y;
-	float	dx;
-	float	dy;
-	int		lx;
-	int		ly;
-	int		longueur;
+	int		dx;
+	int		dy;
+	int		i;
+	int		xinc;
+	int		yinc;
+	int		cumul;
 
-	lx = x2 - x1;
-	ly = y2 - y1;
-
-	longueur = sqrt(pow(lx, 2) + pow (ly, 2));
-	printf("%d\n", longueur);
-
-	dx = longueur / lx;
-	dy = longueur / ly;
-
-	printf("%f , %f\n", dx, dy);
-
-	while (x < lx && y < ly)
+	dx = p1.x - p1.x;
+	dy = p2.y - y1;
+	xinc = ( dx > 0 ) ? 1 : -1;
+	yinc = ( dy > 0 ) ? 1 : -1;
+	dx = abs(dx);
+	dy = abs(dy);
+	mlx_pixel_put(mlx, win, x1, y1, c);
+	if ( dx > dy )
 	{
-		x += dx;
-		y += dy;
-		mlx_pixel_put(mlx, wi, x + x1, y + y1, c);
+		cumul = dx / 2 ;
+		i = 1;
+		while (i++ <= dx)
+		{
+			x1 += xinc ;
+			cumul += dy ;
+			if (cumul >= dx)
+			{
+				cumul -= dx;
+				y1 += yinc;
+			}
+			mlx_pixel_put(mlx, win, x1, y1, c);
+		}
 	}
-
+	else
+	{
+		cumul = dy / 2 ;
+		while (i++ <= dy)
+		{
+			y1 += yinc ;
+			cumul += dx ;
+			if ( cumul >= dy )
+			{
+				cumul -= dy;
+				x1 += xinc;
+			}
+			mlx_pixel_put(mlx, win, x1, y1, c);
+		}
+	}
 }
 
 int		color_set_r(int color, char c)
@@ -128,8 +137,9 @@ int		main()
 
 	while (1)
 	{
-		//ft_putsquare(mlx, win, 10, 10, 100, 200, 255<<16);
-		ft_putline(mlx , win , 10, 10, 500, 200, 255);
-		ft_putline(mlx , win , 10, 10, 300, 300, 255);
+		ligne(mlx, win, 10, 10, 500, 300, 255);
+		sleep(1);
+		ligne(mlx, win, 500, 300, 600, 600, 255);
+		sleep(10);
 	}
 }
