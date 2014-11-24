@@ -6,7 +6,7 @@
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/24 16:18:43 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/24 17:16:29 by adoussau         ###   ########.fr       */
+/*   Updated: 2014/11/24 19:13:50 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ typedef struct s_env
 
 typedef struct s_color
 {
-	char	r;
-	char	g;
-	char	b;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
 }	t_color;
 
 typedef struct s_point

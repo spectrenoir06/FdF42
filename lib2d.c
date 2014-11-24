@@ -6,7 +6,7 @@
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/24 10:25:22 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/24 17:18:43 by adoussau         ###   ########.fr       */
+/*   Updated: 2014/11/24 19:30:13 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int		colortoint(t_color c)
 	int		i;
 
 	i = c.r;
-	i << 4;
+	i = i << 8;
 	i += c.g;
-	i << 4;
+	i = i << 8;
 	i += c.b;
 	return (i);
 }
@@ -66,7 +66,7 @@ void	ft_putpixel(t_env env, t_point p, t_color c)
 	mlx_pixel_put(env.mlx, env.win, p.x, p.y, colortoint(c));
 }
 
-void ft_line(t_env env, t_point p1, t_point p2, int c)
+void ft_line(t_env env, t_point p1, t_point p2, t_color c)
 {
 	int		dx;
 	int		dy;
@@ -75,42 +75,42 @@ void ft_line(t_env env, t_point p1, t_point p2, int c)
 	int		yinc;
 	int		cumul;
 
-	dx = p1.x - p1.x;
-	dy = p2.y - y1;
+	dx = p2.x - p1.x;
+	dy = p2.y - p1.y;
 	xinc = ( dx > 0 ) ? 1 : -1;
 	yinc = ( dy > 0 ) ? 1 : -1;
 	dx = abs(dx);
 	dy = abs(dy);
-	mlx_pixel_put(mlx, win, x1, y1, c);
 	if ( dx > dy )
 	{
 		cumul = dx / 2 ;
 		i = 1;
 		while (i++ <= dx)
 		{
-			x1 += xinc ;
+			p1.x += xinc ;
 			cumul += dy ;
 			if (cumul >= dx)
 			{
 				cumul -= dx;
-				y1 += yinc;
+				p1.y += yinc;
 			}
-			mlx_pixel_put(mlx, win, x1, y1, c);
+			ft_putpixel(env, p1, c);
 		}
 	}
 	else
 	{
-		cumul = dy / 2 ;
+		cumul = dy / 2;
+		i = 1;
 		while (i++ <= dy)
 		{
-			y1 += yinc ;
+			p1.y += yinc ;
 			cumul += dx ;
 			if ( cumul >= dy )
 			{
 				cumul -= dy;
-				x1 += xinc;
+				p1.x += xinc;
 			}
-			mlx_pixel_put(mlx, win, x1, y1, c);
+			ft_putpixel(env, p1, c);
 		}
 	}
 }
@@ -126,20 +126,20 @@ int		main()
 {
 	void	*mlx = mlx_init();
 	void	*win = mlx_new_window(mlx, 1280, 720, "Hello world!");
+	t_env	env = {mlx, win};
 
-	int		x = 0;
-	int		y = 0;
-	int		dx = 1;
-	int		dy = 1;
-	unsigned char	r = 0;
-	unsigned char	g = 0;
-	unsigned char	b = 0;
+	t_point		p1 = {10, 10};
+	t_point		p2 = {300, 500};
+	t_point		p3 = {200, 400};
+	t_color		blue = {0, 0x99, 0xFF};
+
+	printf("color = %d\n",colortoint(blue));
 
 	while (1)
 	{
-		ligne(mlx, win, 10, 10, 500, 300, 255);
+		ft_line(env, p1, p2, blue);
+		ft_line(env, p2, p3, blue);
 		sleep(1);
-		ligne(mlx, win, 500, 300, 600, 600, 255);
-		sleep(10);
+		//line(env, p);
 	}
 }
