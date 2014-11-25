@@ -24,6 +24,17 @@ int		ft_colortoint(t_color c)
 	return (i);
 }
 
+
+t_color	ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b)
+{
+	t_color t;
+
+	t.r = r;
+	t.g = g;
+	t.b = b;
+	return (t);
+}
+
 void	ft_draw_rect(t_env env, t_rect r, t_color c)
 {
 	int		lx;
@@ -93,3 +104,20 @@ void 	ft_draw_line(t_env env, t_point p1, t_point p2, t_color c)
 	}
 }
 
+t_point		ft_new_point(int x, int y)
+{
+	t_point		t;
+
+	t.x = x;
+	t.y = y;
+	return (t);
+}
+
+t_rect		ft_new_rect(t_point p1, t_point p2)
+{
+	t_rect		r;
+
+	r.p1 = p1;
+	r.p2 = p2;
+	return (r);
+}

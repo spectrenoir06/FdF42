@@ -44,9 +44,12 @@ typedef struct s_rect
 	t_point		p2;
 }	t_rect;
 
-int		ft_colortoint(t_color c);
-void	ft_draw_rect(t_env e, t_rect r, t_color c);
-void	ft_draw_pixel(t_env env, t_point p, t_color c);
-void 	ft_putline(t_env env, t_point p1, t_point p2, t_color c);
+int			ft_colortoint(t_color c);
+void		ft_draw_rect(t_env e, t_rect r, t_color c);
+void		ft_draw_pixel(t_env env, t_point p, t_color c);
+void 		ft_draw_line(t_env env, t_point p1, t_point p2, t_color c);
+t_point		ft_new_point(int x, int y);
+t_rect		ft_new_rect(t_point p1, t_point p2);
+t_color	ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b);
 
 #endif
