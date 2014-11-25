@@ -6,7 +6,7 @@
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/24 10:25:22 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/24 20:11:25 by adoussau         ###   ########.fr       */
+/*   Updated: 2014/11/25 17:09:54 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,24 @@ int		color_set_r(int color, char c)
 	color = color & (i<<8);
 }
 
+int		mouse_press(int button, int x, int y, void *param)
+{
+	return (0);
+}
+
+int		key_press(int keycode, void *param)
+{
+	printf("%d = %c\n", keycode, keycode);
+	return (0);
+}
+
+int		loop(void *param)
+{
+	printf("test\n");
+	sleep(1);
+	return (0);
+}
+
 int		main()
 {
 	void	*mlx = mlx_init();
@@ -134,12 +152,9 @@ int		main()
 	t_color		blue = {0, 0x99, 0xFF};
 
 	printf("color = %d\n",colortoint(blue));
+	mlx_key_hook(env.win, key_press, &env);
+	mlx_mouse_hook(env.win, mouse_press, &env);
+	mlx_loop_hook(env.mlx, loop, &env);
+	mlx_loop(env.mlx);
 
-	while (1)
-	{
-		ft_putline(env, p1, p2, blue);
-		ft_putline(env, p2, p3, blue);
-		sleep(1);
-		//line(env, p);
-	}
 }
