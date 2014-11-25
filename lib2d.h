@@ -13,6 +13,12 @@
 #ifndef LIB2D_H
 # define LIB2D_H
 
+# include <mlx.h>
+# include <math.h>
+# include <stdlib.h>
+//# include <unistd.h>
+
+
 typedef struct s_env
 {
 	void	*mlx;
@@ -39,8 +45,8 @@ typedef struct s_rect
 }	t_rect;
 
 int		ft_colortoint(t_color c);
-void	ft_putsquare(void *mlx, void *win, int x, int y, int lx, int ly, int c);
-void	ft_putpixel(t_env env, t_point p, t_color c);
+void	ft_draw_rect(t_env e, t_rect r, t_color c);
+void	ft_draw_pixel(t_env env, t_point p, t_color c);
 void 	ft_putline(t_env env, t_point p1, t_point p2, t_color c);
 
 #endif

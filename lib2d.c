@@ -10,14 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <math.h>
-#include <stdlib.h>
-#include <unistd.h>
-
 #include "lib2d.h"
-
-
 
 int		ft_colortoint(t_color c)
 {
@@ -34,14 +27,12 @@ int		ft_colortoint(t_color c)
 void	ft_draw_rect(t_env env, t_rect r, t_color c)
 {
 	int		lx;
-	int		ly;
 
 	lx = r.p2.x - r.p1.x;
-	ly = t.p2.y - y.p1.y;
 	while (r.p1.x <= r.p2.x && r.p1.y <= r.p2.y)
 	{
-		ft_draw_pixel(env, r.p1.x++, r.p1.y, c);
-		if (r.p1.x >= r.p2.x)
+		ft_draw_pixel(env, r.p1, c);
+		if (++r.p1.x >= r.p2.x)
 		{
 			r.p1.x -= lx;
 			r.p1.y++;

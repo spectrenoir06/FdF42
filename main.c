@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "lib2d.h"
+#include <stdio.h>
 
 int		mouse_press(int button, int x, int y, void *param)
 {
@@ -23,9 +24,9 @@ int		key_press(int keycode, void *param)
 	return (0);
 }
 
-int		loop(void *param)
+int		loop(t_env	*env)
 {
-	printf("test\n");
+	ft_draw_rect(t_env *env);
 	sleep(1);
 	return (0);
 }
@@ -40,5 +41,5 @@ int		main()
 	mlx_mouse_hook(env.win, mouse_press, &env);
 	mlx_loop_hook(env.mlx, loop, &env);
 	mlx_loop(env.mlx);
-
+	return (0);
 }
