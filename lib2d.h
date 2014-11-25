@@ -34,12 +34,13 @@ typedef struct s_point
 
 typedef struct s_rect
 {
-	int		x1;
-	int		y1;
-	int		x2;
-	int		y2;
+	t_point		p1;
+	t_point		p2;
 }	t_rect;
 
-
+int		ft_colortoint(t_color c);
+void	ft_putsquare(void *mlx, void *win, int x, int y, int lx, int ly, int c);
+void	ft_putpixel(t_env env, t_point p, t_color c);
+void 	ft_putline(t_env env, t_point p1, t_point p2, t_color c);
 
 #endif

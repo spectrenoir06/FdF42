@@ -6,19 +6,20 @@
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/24 10:25:22 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/25 17:09:54 by adoussau         ###   ########.fr       */
+/*   Updated: 2014/11/25 17:35:35 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 #include "lib2d.h"
 
-int		colortoint(t_color c)
+
+
+int		ft_colortoint(t_color c)
 {
 	int		i;
 
@@ -30,43 +31,30 @@ int		colortoint(t_color c)
 	return (i);
 }
 
-int		get_color(char r, char g, char b)
+void	ft_draw_rect(t_env env, t_rect r, t_color c)
 {
-	int		i;
+	int		lx;
+	int		ly;
 
-	i = r;
-	i << 8;
-	i += g;
-	i << 8;
-	i += b;
-	return (i);
-}
-
-void	ft_putsquare(void *mlx, void *win, int x, int y, int lx, int ly, int c)
-{
-	int		x2;
-	int		y2;
-
-	x2 = x + lx;
-	y2 = y + ly;
-
-	while (x <= x2 && y <= y2)
+	lx = r.p2.x - r.p1.x;
+	ly = t.p2.y - y.p1.y;
+	while (r.p1.x <= r.p2.x && r.p1.y <= r.p2.y)
 	{
-		mlx_pixel_put(mlx, win, x++, y, c);
-		if (x >= x2)
+		ft_draw_pixel(env, r.p1.x++, r.p1.y, c);
+		if (r.p1.x >= r.p2.x)
 		{
-			x -= lx;
-			y++;
+			r.p1.x -= lx;
+			r.p1.y++;
 		}
 	}
 }
 
-void	ft_putpixel(t_env env, t_point p, t_color c)
+void	ft_draw_pixel(t_env env, t_point p, t_color c)
 {
-	mlx_pixel_put(env.mlx, env.win, p.x, p.y, colortoint(c));
+	mlx_pixel_put(env.mlx, env.win, p.x, p.y, ft_colortoint(c));
 }
 
-void ft_putline(t_env env, t_point p1, t_point p2, t_color c)
+void 	ft_draw_line(t_env env, t_point p1, t_point p2, t_color c)
 {
 	int		dx;
 	int		dy;
@@ -81,10 +69,10 @@ void ft_putline(t_env env, t_point p1, t_point p2, t_color c)
 	yinc = ( dy > 0 ) ? 1 : -1;
 	dx = abs(dx);
 	dy = abs(dy);
+	i = 1;
 	if ( dx > dy )
 	{
-		cumul = dx / 2 ;
-		i = 1;
+		cumul = dx / 2 ;;
 		while (i++ <= dx)
 		{
 			p1.x += xinc ;
@@ -94,13 +82,12 @@ void ft_putline(t_env env, t_point p1, t_point p2, t_color c)
 				cumul -= dx;
 				p1.y += yinc;
 			}
-			ft_putpixel(env, p1, c);
+			ft_draw_pixel(env, p1, c);
 		}
 	}
 	else
 	{
 		cumul = dy / 2;
-		i = 1;
 		while (i++ <= dy)
 		{
 			p1.y += yinc ;
@@ -110,51 +97,8 @@ void ft_putline(t_env env, t_point p1, t_point p2, t_color c)
 				cumul -= dy;
 				p1.x += xinc;
 			}
-			ft_putpixel(env, p1, c);
+			ft_draw_pixel(env, p1, c);
 		}
 	}
 }
 
-int		color_set_r(int color, char c)
-{
-	int i;
-	i = c;
-	color = color & (i<<8);
-}
-
-int		mouse_press(int button, int x, int y, void *param)
-{
-	return (0);
-}
-
-int		key_press(int keycode, void *param)
-{
-	printf("%d = %c\n", keycode, keycode);
-	return (0);
-}
-
-int		loop(void *param)
-{
-	printf("test\n");
-	sleep(1);
-	return (0);
-}
-
-int		main()
-{
-	void	*mlx = mlx_init();
-	void	*win = mlx_new_window(mlx, 1280, 720, "Hello world!");
-	t_env	env = {mlx, win};
-
-	t_point		p1 = {10, 10};
-	t_point		p2 = {300, 500};
-	t_point		p3 = {200, 400};
-	t_color		blue = {0, 0x99, 0xFF};
-
-	printf("color = %d\n",colortoint(blue));
-	mlx_key_hook(env.win, key_press, &env);
-	mlx_mouse_hook(env.win, mouse_press, &env);
-	mlx_loop_hook(env.mlx, loop, &env);
-	mlx_loop(env.mlx);
-
-}
