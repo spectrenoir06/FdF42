@@ -56,11 +56,12 @@ void	ft_draw_pixel(t_env env, t_pt2d p, t_color c)
 	mlx_pixel_put(env.mlx, env.win, p.x, p.y, ft_colortoint(c));
 }
 
-void	ft_draw_pixel(t_env env, t_pt3d p, t_color c)
+void	ft_draw_pixel3d(t_env env, t_pt3d p, t_color c)
 {
-	x = cst1 * p.x - cst2 * p.y;
-	y = p.z + (cst1 / 2) * p.x + (cst2 / 2) * p.y; 
-	mlx_pixel_put(env.mlx, env.win, x, y, ft_colortoint(c));
+	t_pt2d		t;
+
+	t = ft_3d_to_2d(p);
+	mlx_pixel_put(env.mlx, env.win, t.x, t.y, ft_colortoint(c));
 }
 
 void 	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
@@ -111,12 +112,27 @@ void 	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 	}
 }
 
+void 	ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c)
+{
+	ft_draw_line(env, ft_3d_to_2d(p1), ft_3d_to_2d(p2), c);
+}
+
 t_pt2d		ft_new_point(int x, int y)
 {
 	t_pt2d		t;
 
 	t.x = x;
 	t.y = y;
+	return (t);
+}
+
+t_pt2d		ft_3d_to_2d(t_pt3d	p)
+{
+	t_pt2d		t;
+	float		cst1 = 1;
+	float		cst2 = 1;
+	t.x = (cst1 * p.x) - (cst2 * p.y);
+	t.y = p.z + ((cst1 / 2) * p.x) + ((cst2 / 2) * p.y);
 	return (t);
 }
 
