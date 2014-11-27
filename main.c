@@ -84,10 +84,10 @@ int		loop(t_all	*all)
 	all->op7 = all->p7;
 	all->op8 = all->p8;
 
-	/*ft_draw_line3d(all->env, all->op1, all->op2, ft_rgb_to_color(255,255,255));
-	ft_draw_line3d(all->env, all->op2, all->op3, ft_rgb_to_color(255,255,255));
-	ft_draw_line3d(all->env, all->op3, all->op4, ft_rgb_to_color(255,255,255));
-	ft_draw_line3d(all->env, all->op4, all->op1, ft_rgb_to_color(255,255,255));
+	ft_draw_line3d(all->env, all->op1, all->op2, ft_rgb_to_color(0,0,0));
+	ft_draw_line3d(all->env, all->op2, all->op3, ft_rgb_to_color(0,0,0));
+	ft_draw_line3d(all->env, all->op3, all->op4, ft_rgb_to_color(0,0,0));
+	ft_draw_line3d(all->env, all->op4, all->op1, ft_rgb_to_color(0,0,0));
 
 	ft_draw_line3d(all->env, all->op1, all->op5, ft_rgb_to_color(0,0,0));
 	ft_draw_line3d(all->env, all->op2, all->op6, ft_rgb_to_color(0,0,0));
@@ -98,8 +98,17 @@ int		loop(t_all	*all)
 	ft_draw_line3d(all->env, all->op5, all->op6, ft_rgb_to_color(0,0,0));
 	ft_draw_line3d(all->env, all->op6, all->op7, ft_rgb_to_color(0,0,0));
 	ft_draw_line3d(all->env, all->op7, all->op8, ft_rgb_to_color(0,0,0));
-	ft_draw_line3d(all->env, all->op8, all->op5, ft_rgb_to_color(0,0,0));*/
+	ft_draw_line3d(all->env, all->op8, all->op5, ft_rgb_to_color(0,0,0));
 
+	all->p1.x++;
+	all->p2.x++;
+	all->p3.x++;
+	all->p4.x++;
+
+	all->p5.x++;
+	all->p6.x++;
+	all->p7.x++;
+	all->p8.x++;
 
 	ft_draw_line3d(all->env, all->p1, all->p2, ft_rgb_to_color(255,0,0));
 	ft_draw_line3d(all->env, all->p2, all->p3, ft_rgb_to_color(255,0,0));
@@ -117,16 +126,6 @@ int		loop(t_all	*all)
 	ft_draw_line3d(all->env, all->p7, all->p8, ft_rgb_to_color(0,0,255));
 	ft_draw_line3d(all->env, all->p8, all->p5, ft_rgb_to_color(0,0,255));
 
-
-	all->p1.x++;
-	all->p2.x++;
-	all->p3.x++;
-	all->p4.x++;
-
-	all->p5.x++;
-	all->p6.x++;
-	all->p7.x++;
-	all->p8.x++;
 
 	usleep(5000);
 	return (0);

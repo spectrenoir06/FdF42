@@ -129,8 +129,8 @@ t_pt2d		ft_new_point(int x, int y)
 t_pt2d		ft_3d_to_2d(t_pt3d	p)
 {
 	t_pt2d		t;
-	float		cst1 = 1;
-	float		cst2 = 1;
+	float	cst1 = 1;
+	float 	cst2 = 1;
 	t.x = (cst1 * p.x) - (cst2 * p.y);
 	t.y = p.z + ((cst1 / 2) * p.x) + ((cst2 / 2) * p.y);
 	return (t);
