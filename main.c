@@ -62,12 +62,14 @@ int		main()
 	t_env	env = {mlx, win};
 	t_all	all;
 	all.env = env;
-	unsigned char tab[5][5] = {	{0, 0, 0, 0, 0},
+	
+	/*unsigned char tab[5][5] = {	{0, 0, 0, 0, 0},
 								{0, 3, 4, 5, 0},
 								{0, 2, 0, 6, 0},
 								{0, 1, 0, 7, 0},
 								{0, 0, 0, 0, 0}
 							};
+	*/
 
 	mlx_key_hook(env.win, key_press, &all);
 	mlx_mouse_hook(env.win, mouse_press, &all);

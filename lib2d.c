@@ -51,12 +51,19 @@ void	ft_draw_rect(t_env env, t_rect r, t_color c)
 	}
 }
 
-void	ft_draw_pixel(t_env env, t_point p, t_color c)
+void	ft_draw_pixel(t_env env, t_pt2d p, t_color c)
 {
 	mlx_pixel_put(env.mlx, env.win, p.x, p.y, ft_colortoint(c));
 }
 
-void 	ft_draw_line(t_env env, t_point p1, t_point p2, t_color c)
+void	ft_draw_pixel(t_env env, t_pt3d p, t_color c)
+{
+	x = cst1 * p.x - cst2 * p.y;
+	y = p.z + (cst1 / 2) * p.x + (cst2 / 2) * p.y; 
+	mlx_pixel_put(env.mlx, env.win, x, y, ft_colortoint(c));
+}
+
+void 	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 {
 	int		dx;
 	int		dy;
@@ -104,16 +111,16 @@ void 	ft_draw_line(t_env env, t_point p1, t_point p2, t_color c)
 	}
 }
 
-t_point		ft_new_point(int x, int y)
+t_pt2d		ft_new_point(int x, int y)
 {
-	t_point		t;
+	t_pt2d		t;
 
 	t.x = x;
 	t.y = y;
 	return (t);
 }
 
-t_rect		ft_new_rect(t_point p1, t_point p2)
+t_rect		ft_new_rect(t_pt2d p1, t_pt2d p2)
 {
 	t_rect		r;
 

@@ -32,24 +32,31 @@ typedef struct s_color
 	unsigned char	b;
 }	t_color;
 
-typedef struct s_point
+typedef struct s_pt2d
 {
 	int		x;
 	int		y;
-}	t_point;
+}	t_pt2d;
+
+typedef struct s_pt3d
+{
+	int		x;
+	int		y;
+	int		z;
+}	t_pt3d;
 
 typedef struct s_rect
 {
-	t_point		p1;
-	t_point		p2;
+	t_pt2d		p1;
+	t_pt2d		p2;
 }	t_rect;
 
 int			ft_colortoint(t_color c);
 void		ft_draw_rect(t_env e, t_rect r, t_color c);
-void		ft_draw_pixel(t_env env, t_point p, t_color c);
-void 		ft_draw_line(t_env env, t_point p1, t_point p2, t_color c);
-t_point		ft_new_point(int x, int y);
-t_rect		ft_new_rect(t_point p1, t_point p2);
+void		ft_draw_pixel(t_env env, t_pt2d p, t_color c);
+void 		ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c);
+t_pt2d		ft_new_point(int x, int y);
+t_rect		ft_new_rect(t_pt2d p1, t_pt2d p2);
 t_color	ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b);
 
 #endif
