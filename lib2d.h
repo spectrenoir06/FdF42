@@ -59,5 +59,7 @@ t_pt2d		ft_new_point(int x, int y);
 t_rect		ft_new_rect(t_pt2d p1, t_pt2d p2);
 t_color		ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b);
 t_pt2d		ft_3d_to_2d(t_pt3d	p);
+t_pt3d		ft_new_point3d(int x, int y, int z);
+
 
 #endif

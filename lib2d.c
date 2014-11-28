@@ -126,6 +126,16 @@ t_pt2d		ft_new_point(int x, int y)
 	return (t);
 }
 
+t_pt3d		ft_new_point3d(int x, int y, int z)
+{
+	t_pt3d		t;
+
+	t.x = x;
+	t.y = y;
+	t.z = z;
+	return (t);
+}
+
 t_pt2d		ft_3d_to_2d(t_pt3d	p)
 {
 	t_pt2d		t;

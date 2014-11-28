@@ -21,7 +21,7 @@ typedef struct s_all
 	t_pt3d			y;
 	t_pt3d			z;
 
-	t_pt3d			tab[4][4];
+	t_pt3d			tab[100][100];
 
 }	t_all;
 
@@ -30,10 +30,10 @@ void	draw_map(t_all *all)
 	int x = 0;
 	int y = 0;
 
-	while (y < 3)
+	while (y < 99)
 	{
 		x = 0;
-		while (x < 3)
+		while (x < 99)
 		{
 			ft_draw_pixel3d(all->env, all->tab[x][y], ft_rgb_to_color(0,255, 100));
 			ft_draw_line3d(all->env, all->tab[x][y], all->tab[x + 1][y], ft_rgb_to_color(0,255, 100));
@@ -69,6 +69,24 @@ int		loop(t_all	*all)
 	return (0);
 }
 
+void	gen(t_pt3d t[][100])
+{
+	int x = 0;
+	int y = 0;
+
+	while (y < 100)
+	{
+		x = 0;
+		while (x < 100)
+		{
+			t[x++][y] = ft_new_point3d(x * 20 + 300,y * 20, 0);
+;
+		}
+		y++;
+	}
+
+}
+
 int		main()
 {
 	void	*mlx = mlx_init();
@@ -81,50 +99,18 @@ int		main()
 	t_pt3d	y = {100,0,100};
 	t_pt3d	z = {100,100,200};
 
-	t_pt3d	p1 = {100,0,0};
-	t_pt3d	p2 = {120,0,0};
-	t_pt3d	p3 = {140,0,0};
-	t_pt3d	p4 = {160,0,0};
-
-	t_pt3d	p5 = {100,20,0};
-	t_pt3d	p6 = {120,20,0};
-	t_pt3d	p7 = {140,20,0};
-	t_pt3d	p8 = {160,20,0};
-
-	t_pt3d	p9 = {100,40,0};
-	t_pt3d	p10 = {120,40,-5};
-	t_pt3d	p11 = {140,40,0};
-	t_pt3d	p12 = {160,40,0};
-
-	t_pt3d	p13 = {100,60,0};
-	t_pt3d	p14 = {120,60,0};
-	t_pt3d	p15 = {140,60,0};
-	t_pt3d	p16 = {160,60,0};
-
-	all.tab[0][0] = p1;
-	all.tab[1][0] = p2;
-	all.tab[2][0] = p3;
-	all.tab[3][0] = p4;
-
-	all.tab[0][1] = p5;
-	all.tab[1][1] = p6;
-	all.tab[2][1] = p7;
-	all.tab[3][1] = p8;
-
-	all.tab[0][2] = p9;
-	all.tab[1][2] = p10;
-	all.tab[2][2] = p11;
-	all.tab[3][2] = p12;
-
-	all.tab[0][3] = p13;
-	all.tab[1][3] = p14;
-	all.tab[2][3] = p15;
-	all.tab[3][3] = p16;
 
 	all.origin = origin;
 	all.x		= x;
 	all.y 		= y;
 	all.z 		= z;
+
+	gen(all.tab);
+
+	all.tab[5][5].z = -12;
+	all.tab[5][6].z = -12;
+	all.tab[6][6].z = -12;
+	all.tab[6][5].z = -12;
 
 
 
