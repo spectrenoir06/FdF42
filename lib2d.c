@@ -139,7 +139,7 @@ t_pt2d		ft_3d_to_2d(t_pt3d p)
 {
 	t_pt2d		t;
 
-	t.x = (cst1 * p.x) - (cst2 * p.y);
+	t.x = p.x - p.y;
 	t.y = p.z + (p.x / 2.0) + (p.y / 2.0);
 	return (t);
 }
