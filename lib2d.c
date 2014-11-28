@@ -24,7 +24,6 @@ int		ft_colortoint(t_color c)
 	return (i);
 }
 
-
 t_color	ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b)
 {
 	t_color t;
@@ -64,7 +63,7 @@ void	ft_draw_pixel3d(t_env env, t_pt3d p, t_color c)
 	mlx_pixel_put(env.mlx, env.win, t.x, t.y, ft_colortoint(c));
 }
 
-void 	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
+void	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 {
 	int		dx;
 	int		dy;
@@ -75,18 +74,18 @@ void 	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 
 	dx = p2.x - p1.x;
 	dy = p2.y - p1.y;
-	xinc = ( dx > 0 ) ? 1 : -1;
-	yinc = ( dy > 0 ) ? 1 : -1;
+	xinc = (dx > 0) ? 1 : -1;
+	yinc = (dy > 0) ? 1 : -1;
 	dx = abs(dx);
 	dy = abs(dy);
 	i = 1;
-	if ( dx > dy )
+	if (dx > dy)
 	{
-		cumul = dx / 2 ;;
+		cumul = dx / 2;
 		while (i++ <= dx)
 		{
-			p1.x += xinc ;
-			cumul += dy ;
+			p1.x += xinc;
+			cumul += dy;
 			if (cumul >= dx)
 			{
 				cumul -= dx;
@@ -100,9 +99,9 @@ void 	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 		cumul = dy / 2;
 		while (i++ <= dy)
 		{
-			p1.y += yinc ;
-			cumul += dx ;
-			if ( cumul >= dy )
+			p1.y += yinc;
+			cumul += dx;
+			if (cumul >= dy)
 			{
 				cumul -= dy;
 				p1.x += xinc;
@@ -112,7 +111,7 @@ void 	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 	}
 }
 
-void 	ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c)
+void	ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c)
 {
 	ft_draw_line(env, ft_3d_to_2d(p1), ft_3d_to_2d(p2), c);
 }
@@ -136,13 +135,12 @@ t_pt3d		ft_new_point3d(int x, int y, int z)
 	return (t);
 }
 
-t_pt2d		ft_3d_to_2d(t_pt3d	p)
+t_pt2d		ft_3d_to_2d(t_pt3d p)
 {
 	t_pt2d		t;
-	float	cst1 = 1;
-	float 	cst2 = 1;
+
 	t.x = (cst1 * p.x) - (cst2 * p.y);
-	t.y = p.z + ((cst1 / 2) * p.x) + ((cst2 / 2) * p.y);
+	t.y = p.z + (p.x / 2.0) + (p.y / 2.0);
 	return (t);
 }
 
