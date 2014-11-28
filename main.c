@@ -150,7 +150,8 @@ int		main(int argc, char **argv)
 		while (lst)
 		{
 			point = *((t_pt3d *)lst->content);
-			printf("%d %d = %d\n" ,point.x, point.y, point.z);
+			//printf("%d %d = %d\n" ,point.x, point.y, point.z);
+			point.z = -point.z * 1.5;
 			tab[point.x][point.y] = point;
 			lst = lst->next;
 		}
