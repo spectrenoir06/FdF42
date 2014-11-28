@@ -12,6 +12,8 @@
 
 #include "lib2d.h"
 #include <stdio.h>
+#include <time.h>
+#include <math.h>
 
 typedef struct s_all
 {
@@ -24,6 +26,12 @@ typedef struct s_all
 	t_pt3d			tab[100][100];
 
 }	t_all;
+
+int rand_a_b(int a, int b)
+{
+    return rand()%(b-a) +a;
+}
+
 
 void	draw_map(t_all *all)
 {
@@ -79,7 +87,8 @@ void	gen(t_pt3d t[][100])
 		x = 0;
 		while (x < 100)
 		{
-			t[x++][y] = ft_new_point3d(x * 20 + 300,y * 20, 0);
+			printf("%f\n", cos(x));
+			t[x++][y] = ft_new_point3d(x * 20 + 300,y * 20, (cos(x / 10.0 ) + cos(y / 10.0 )) * 100);
 ;
 		}
 		y++;
@@ -90,7 +99,7 @@ void	gen(t_pt3d t[][100])
 int		main()
 {
 	void	*mlx = mlx_init();
-	void	*win = mlx_new_window(mlx, 1280, 720, "Hello world!");
+	void	*win = mlx_new_window(mlx, 2560, 1440, "Hello world!");
 	t_env	env = {mlx, win};
 	t_all	all;
 	all.env = env;
@@ -107,10 +116,10 @@ int		main()
 
 	gen(all.tab);
 
-	all.tab[5][5].z = -12;
+	/*all.tab[5][5].z = -12;
 	all.tab[5][6].z = -12;
 	all.tab[6][6].z = -12;
-	all.tab[6][5].z = -12;
+	all.tab[6][5].z = -12;*/
 
 
 
