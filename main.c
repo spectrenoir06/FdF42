@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
+#include "libft.h"
 
 typedef struct s_all
 {
@@ -43,7 +44,7 @@ void	draw_map(t_all *all)
 		x = 0;
 		while (x < 99)
 		{
-			ft_draw_pixel3d(all->env, all->tab[x][y], ft_rgb_to_color(0,255, 100));
+			//ft_draw_pixel3d(all->env, all->tab[x][y], ft_rgb_to_color(0,255, 100));
 			ft_draw_line3d(all->env, all->tab[x][y], all->tab[x + 1][y], ft_rgb_to_color(0,255, 100));
 			ft_draw_line3d(all->env, all->tab[x][y+1], all->tab[x][y], ft_rgb_to_color(0,255, 100));
 			x++;
@@ -51,7 +52,7 @@ void	draw_map(t_all *all)
 		y++;
 	}
 }
-
+/*
 int		mouse_press(int button, int x, int y, t_all *all)
 {
 	return (0);
@@ -62,7 +63,7 @@ int		key_press(int keycode, t_all*	all)
 	printf("%d = %c\n", keycode, keycode);
 	return (0);
 }
-
+*/
 int		loop(t_all	*all)
 {
 	draw_map(all);
@@ -88,7 +89,8 @@ void	gen(t_pt3d t[][100])
 		while (x < 100)
 		{
 			printf("%f\n", cos(x));
-			t[x++][y] = ft_new_point3d(x * 20 + 300,y * 20, (cos(x / 10.0 ) + cos(y / 10.0 )) * 100);
+			t[x][y] = ft_new_point3d(x * 20 + 300,y * 20, (cos(x / 10.0 ) + cos(y / 10.0 )) * 100);
+			x++;
 ;
 		}
 		y++;
@@ -123,10 +125,10 @@ int		main()
 
 
 
-	
+	ft_putstr("salut\n");
 
-	mlx_key_hook(env.win, key_press, &all);
-	mlx_mouse_hook(env.win, mouse_press, &all);
+	//mlx_key_hook(env.win, key_press, &all);
+	//mlx_mouse_hook(env.win, mouse_press, &all);
 	mlx_loop_hook(env.mlx, loop, &all);
 	mlx_loop(env.mlx);
 	return (0);
