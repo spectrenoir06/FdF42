@@ -62,6 +62,6 @@ t_pt2d		ft_3d_to_2d(t_pt3d	p);
 t_pt3d		ft_new_point3d(int x, int y, int z);
 void 		ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c);
 void		ft_draw_pixel3d(t_env env, t_pt3d p, t_color c);
-
+t_pt3d		ft_point3d_mul(t_pt3d p, int k);
 
 #endif

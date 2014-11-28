@@ -154,3 +154,10 @@ t_rect		ft_new_rect(t_pt2d p1, t_pt2d p2)
 	r.p2 = p2;
 	return (r);
 }
+
+t_pt3d	ft_point3d_mul(t_pt3d p, int k)
+{
+	p.x *= k;
+	p.y *= k;
+	return (p);
+}
