@@ -12,7 +12,7 @@
 
 #include "lib2d.h"
 
-int		ft_colortoint(t_color c)
+int			ft_colortoint(t_color c)
 {
 	int		i;
 
@@ -37,7 +37,7 @@ t_color		ft_inttocolor(int c)
 	return (i);
 }
 
-t_color	ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b)
+t_color		ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b)
 {
 	t_color t;
 
@@ -47,7 +47,7 @@ t_color	ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b)
 	return (t);
 }
 
-void	ft_draw_rect(t_env env, t_rect r, t_color c)
+void		ft_draw_rect(t_env env, t_rect r, t_color c)
 {
 	int		lx;
 
@@ -63,12 +63,12 @@ void	ft_draw_rect(t_env env, t_rect r, t_color c)
 	}
 }
 
-void	ft_draw_pixel(t_env env, t_pt2d p, t_color c)
+void		ft_draw_pixel(t_env env, t_pt2d p, t_color c)
 {
 	mlx_pixel_put(env.mlx, env.win, p.x, p.y, ft_colortoint(c));
 }
 
-void	ft_draw_pixel3d(t_env env, t_pt3d p, t_color c)
+void		ft_draw_pixel3d(t_env env, t_pt3d p, t_color c)
 {
 	t_pt2d		t;
 
@@ -76,7 +76,7 @@ void	ft_draw_pixel3d(t_env env, t_pt3d p, t_color c)
 	mlx_pixel_put(env.mlx, env.win, t.x, t.y, ft_colortoint(c));
 }
 
-void	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
+void		ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 {
 	t_line	l;
 
@@ -94,7 +94,7 @@ void	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 		ft_draw_line_sub2(env, l);
 }
 
-void	ft_draw_line_sub1(t_env env, t_line l)
+void		ft_draw_line_sub1(t_env env, t_line l)
 {
 	int		cumul;
 	int		i;
@@ -114,7 +114,7 @@ void	ft_draw_line_sub1(t_env env, t_line l)
 	}
 }
 
-void	ft_draw_line_sub2(t_env env, t_line l)
+void		ft_draw_line_sub2(t_env env, t_line l)
 {
 	int		cumul;
 	int		i;
@@ -134,7 +134,7 @@ void	ft_draw_line_sub2(t_env env, t_line l)
 	}
 }
 
-void	ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c)
+void		ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c)
 {
 	ft_draw_line(env, ft_3d_to_2d(p1), ft_3d_to_2d(p2), c);
 }
@@ -162,7 +162,7 @@ t_pt2d		ft_3d_to_2d(t_pt3d p)
 {
 	t_pt2d		t;
 
-	t.x = p.x - p.y + + (SCREEN_SIZE_X / 2);
+	t.x = p.x - p.y + (SCREEN_SIZE_X / 2);
 	t.y = p.z + (p.x / 2.0) + (p.y / 2.0);
 	return (t);
 }
@@ -176,7 +176,7 @@ t_rect		ft_new_rect(t_pt2d p1, t_pt2d p2)
 	return (r);
 }
 
-t_pt3d	ft_point3d_mul(t_pt3d p, int k)
+t_pt3d		ft_point3d_mul(t_pt3d p, int k)
 {
 	p.x *= k;
 	p.y *= k;
