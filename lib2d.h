@@ -16,40 +16,49 @@
 # include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
-//# include <unistd.h>
 
-
-typedef struct s_env
+typedef struct	s_env
 {
-	void	*mlx;
-	void	*win;
-}	t_env;
+	void		*mlx;
+	void		*win;
+}				t_env;
 
-typedef struct s_color
+typedef struct		s_color
 {
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	b;
-}	t_color;
+}					t_color;
 
-typedef struct s_pt2d
+typedef struct		s_pt2d
 {
-	int		x;
-	int		y;
-}	t_pt2d;
+	int				x;
+	int				y;
+}					t_pt2d;
 
-typedef struct s_pt3d
+typedef struct		s_pt3d
 {
-	int		x;
-	int		y;
-	int		z;
-}	t_pt3d;
+	int				x;
+	int				y;
+	int				z;
+}					t_pt3d;
+
+typedef struct		s_line
+{
+	t_pt2d			p1;
+	t_pt2d			p2;
+	t_color			c1;
+	t_color			c2;
+	t_pt2d			inc;
+	int				dx;
+	int				dy;
+}					t_line;
 
 typedef struct s_rect
 {
 	t_pt2d		p1;
 	t_pt2d		p2;
-}	t_rect;
+}				t_rect;
 
 int			ft_colortoint(t_color c);
 void		ft_draw_rect(t_env e, t_rect r, t_color c);
@@ -63,5 +72,7 @@ t_pt3d		ft_new_point3d(int x, int y, int z);
 void 		ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c);
 void		ft_draw_pixel3d(t_env env, t_pt3d p, t_color c);
 t_pt3d		ft_point3d_mul(t_pt3d p, int k);
+void	ft_draw_line_sub1(t_env env, t_line l);
+void	ft_draw_line_sub2(t_env env, t_line l);
 
 #endif

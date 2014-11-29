@@ -43,12 +43,14 @@ void	draw_map(t_all *all)
 
 int		mouse_press(int button, int x, int y, t_all *all)
 {
+	(void)all;
 	printf("%d , x = %d , y = %d\n", button, x, y);
 	return (0);
 }
 
 int		key_press(int keycode, t_all *all)
 {
+	(void)all;
 	printf("%d = %c\n", keycode, keycode);
 	return (0);
 }

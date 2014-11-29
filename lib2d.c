@@ -24,6 +24,19 @@ int		ft_colortoint(t_color c)
 	return (i);
 }
 
+t_color		ft_inttocolor(int c)
+{
+	t_color i;
+
+	c = (c & 0x00FFFFFF);
+	i.b = (c & 0xFF);
+	c = c >> 8;
+	i.g = (c & 0xFF);
+	c = c << 8;
+	i.r = c;
+	return (i);
+}
+
 t_color	ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b)
 {
 	t_color t;
@@ -65,49 +78,59 @@ void	ft_draw_pixel3d(t_env env, t_pt3d p, t_color c)
 
 void	ft_draw_line(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 {
-	int		dx;
-	int		dy;
-	int		i;
-	int		xinc;
-	int		yinc;
-	int		cumul;
+	t_line	l;
 
-	dx = p2.x - p1.x;
-	dy = p2.y - p1.y;
-	xinc = (dx > 0) ? 1 : -1;
-	yinc = (dy > 0) ? 1 : -1;
-	dx = abs(dx);
-	dy = abs(dy);
-	i = 1;
-	if (dx > dy)
-	{
-		cumul = dx / 2;
-		while (i++ <= dx)
-		{
-			p1.x += xinc;
-			cumul += dy;
-			if (cumul >= dx)
-			{
-				cumul -= dx;
-				p1.y += yinc;
-			}
-			ft_draw_pixel(env, p1, c);
-		}
-	}
+	l.inc.x = ((p2.x - p1.x) > 0) ? 1 : -1;
+	l.inc.y = ((p2.y - p1.y) > 0) ? 1 : -1;
+	l.dx = abs(p2.x - p1.x);
+	l.dy = abs(p2.y - p1.y);
+	l.p1 = p1;
+	l.p2 = p2;
+	l.c1 = c;
+	l.c2 = c;
+	if (l.dx > l.dy)
+		ft_draw_line_sub1(env, l);
 	else
+		ft_draw_line_sub2(env, l);
+}
+
+void	ft_draw_line_sub1(t_env env, t_line l)
+{
+	int		cumul;
+	int		i;
+
+	i = 1;
+	cumul = l.dx / 2;
+	while (i++ <= l.dx)
 	{
-		cumul = dy / 2;
-		while (i++ <= dy)
+		l.p1.x += l.inc.x;
+		cumul += l.dy;
+		if (cumul >= l.dx)
 		{
-			p1.y += yinc;
-			cumul += dx;
-			if (cumul >= dy)
-			{
-				cumul -= dy;
-				p1.x += xinc;
-			}
-			ft_draw_pixel(env, p1, c);
+			cumul -= l.dx;
+			l.p1.y += l.inc.y;
 		}
+		ft_draw_pixel(env, l.p1, l.c1);
+	}
+}
+
+void	ft_draw_line_sub2(t_env env, t_line l)
+{
+	int		cumul;
+	int		i;
+
+	i = 1;
+	cumul = l.dy / 2;
+	while (i++ <= l.dy)
+	{
+		l.p1.y += l.inc.y;
+		cumul += l.dx;
+		if (cumul >= l.dy)
+		{
+			cumul -= l.dy;
+			l.p1.x += l.inc.x;
+		}
+		ft_draw_pixel(env, l.p1, l.c1);
 	}
 }
 
