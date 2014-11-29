@@ -84,6 +84,7 @@ int		main(int argc, char **argv)
 	t_list	*lst;
 	char	*line;
 	char	**tmp;
+	char	**tmp2;
 
 	t_pt3d	point;
 	int x;
@@ -104,15 +105,18 @@ int		main(int argc, char **argv)
 		while (get_next_line(fd, &line))
 		{
 			tmp = ft_strsplit(line, ' ');
-			//free(&line);
+			tmp2 = tmp;
+			free(line);
 			x = 0;
 			while (*tmp)
 			{
 				point = ft_new_point3d(x, y, ft_atoi(*tmp));
 				ft_lstsmartpushback(&lst, ft_lstnew(&point, sizeof(t_pt3d)));
+				free(*tmp);
 				tmp++;
 				x++;
 			}
+			free(tmp2);
 			y++;
 		}
 		all.map.tab = (t_pt3d **)malloc(sizeof(t_pt3d *) * x);
