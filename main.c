@@ -76,7 +76,7 @@ int		main(int argc, char **argv)
 	int fd;
 
 	all.env.mlx = mlx_init();
-	all.env.win = mlx_new_window(all.env.mlx, 500, 500, "Hello world!");
+	all.env.win = mlx_new_window(all.env.mlx, 1280, 720, "Hello world!");
 	lst = NULL;
 	x = 0;
 	y = 0;

@@ -17,6 +17,9 @@
 # include <math.h>
 # include <stdlib.h>
 
+# define SCREEN_SIZE_X 1280
+# define SCREEN_SIZE_Y 720
+
 typedef struct	s_env
 {
 	void		*mlx;

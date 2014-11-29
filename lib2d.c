@@ -162,7 +162,7 @@ t_pt2d		ft_3d_to_2d(t_pt3d p)
 {
 	t_pt2d		t;
 
-	t.x = p.x - p.y;
+	t.x = p.x - p.y + + (SCREEN_SIZE_X / 2);
 	t.y = p.z + (p.x / 2.0) + (p.y / 2.0);
 	return (t);
 }
