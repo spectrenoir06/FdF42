@@ -17,6 +17,11 @@
 #include "libft.h"
 #include "main.h"
 
+int moy(int x, int y)
+{
+	return ((x + y) / 2);
+}
+
 void	draw_map(t_all *all)
 {
 	int x;
@@ -31,10 +36,10 @@ void	draw_map(t_all *all)
 		{
 			ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y], 20),
 				ft_point3d_mul(all->map.tab[x + 1][y], 20),
-				ft_rgb_to_color(250, 255, 0));
+				ft_rgb_to_color(255, 255, 255 -  (all->map.tab[x][y].z * 10)));
 			ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y + 1], 20),
 				ft_point3d_mul(all->map.tab[x][y], 20),
-				ft_rgb_to_color(250, 255, 0));
+				ft_rgb_to_color(255, 255, 255 -  (all->map.tab[x][y].z * 10)));
 			x++;
 		}
 		y++;
@@ -44,7 +49,7 @@ void	draw_map(t_all *all)
 	{
 		ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y], 20),
 				ft_point3d_mul(all->map.tab[x + 1][y], 20),
-				ft_rgb_to_color(250, 255, 0));
+				ft_rgb_to_color(250, 255, 255 -  (all->map.tab[x][y].z * 10)));
 		x++;
 	}
 	y = 0;
@@ -52,7 +57,7 @@ void	draw_map(t_all *all)
 	{
 		ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y], 20),
 				ft_point3d_mul(all->map.tab[x][y + 1], 20),
-				ft_rgb_to_color(250, 255, 0));
+				ft_rgb_to_color(250, 255, 255 -  (all->map.tab[x][y].z * 10)));
 		y++;
 	}
 }
