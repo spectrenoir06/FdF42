@@ -87,6 +87,7 @@ int		main(int argc, char **argv)
 {
 	t_all	all;
 	t_list	*lst;
+	t_list	*lsttmp;
 	char	*line;
 	char	**tmp;
 	char	**tmp2;
@@ -124,6 +125,7 @@ int		main(int argc, char **argv)
 			free(tmp2);
 			y++;
 		}
+		lsttmp = lst;
 		all.map.tab = (t_pt3d **)malloc(sizeof(t_pt3d *) * x);
 		while (i < x)
 			all.map.tab[i++] = malloc(sizeof(t_pt3d) * y);
@@ -134,6 +136,7 @@ int		main(int argc, char **argv)
 			all.map.tab[point.x][point.y] = point;
 			lst = lst->next;
 		}
+		ft_lstsimpledel(&lsttmp);
 		all.map.lx = x;
 		all.map.ly = y;
 	}
