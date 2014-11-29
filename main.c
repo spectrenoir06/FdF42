@@ -29,14 +29,30 @@ void	draw_map(t_all *all)
 		x = 0;
 		while (x < 18)
 		{
-			ft_draw_line3d(all->env, ft_point3d_mul(all->tab[x][y], 20),
-				ft_point3d_mul(all->tab[x + 1][y], 20),
-				ft_rgb_to_color(0, 255, 100));
-			ft_draw_line3d(all->env, ft_point3d_mul(all->tab[x][y + 1], 20),
-				ft_point3d_mul(all->tab[x][y], 20),
-				ft_rgb_to_color(0, 255, 100));
+			ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y], 20),
+				ft_point3d_mul(all->map.tab[x + 1][y], 20),
+				ft_rgb_to_color(250, 255, 0));
+			ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y + 1], 20),
+				ft_point3d_mul(all->map.tab[x][y], 20),
+				ft_rgb_to_color(250, 255, 0));
 			x++;
 		}
+		y++;
+	}
+	x = 0;
+	while (x < 18)
+	{
+		ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y], 20),
+				ft_point3d_mul(all->map.tab[x + 1][y], 20),
+				ft_rgb_to_color(250, 255, 0));
+		x++;
+	}
+	y = 0;
+	while (y < 10)
+	{
+		ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y], 20),
+				ft_point3d_mul(all->map.tab[x][y + 1], 20),
+				ft_rgb_to_color(250, 255, 0));
 		y++;
 	}
 }
@@ -68,7 +84,7 @@ int		main(int argc, char **argv)
 	t_list	*lst;
 	char	*line;
 	char	**tmp;
-	t_pt3d	**tab;
+
 	t_pt3d	point;
 	int x;
 	int y;
@@ -88,6 +104,7 @@ int		main(int argc, char **argv)
 		while (get_next_line(fd, &line))
 		{
 			tmp = ft_strsplit(line, ' ');
+			//free(&line);
 			x = 0;
 			while (*tmp)
 			{
@@ -98,17 +115,18 @@ int		main(int argc, char **argv)
 			}
 			y++;
 		}
-		tab = (t_pt3d **)malloc(sizeof(t_pt3d *) * x);
+		all.map.tab = (t_pt3d **)malloc(sizeof(t_pt3d *) * x);
 		while (i < x)
-			tab[i++] = malloc(sizeof(t_pt3d) * y);
+			all.map.tab[i++] = malloc(sizeof(t_pt3d) * y);
 		while (lst)
 		{
 			point = *((t_pt3d *)lst->content);
 			point.z = -point.z;
-			tab[point.x][point.y] = point;
+			all.map.tab[point.x][point.y] = point;
 			lst = lst->next;
 		}
-		all.tab = tab;
+		all.map.lx = x;
+		all.map.ly = y;
 	}
 	else
 		ft_putstr("pas de fichier\n");

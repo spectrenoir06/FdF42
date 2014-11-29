@@ -10,9 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+typedef struct s_map
+{
+	int		lx;
+	int		ly;
+	t_pt3d	**tab;
+}			t_map;
+
 typedef struct s_all
 {
 	t_env	env;
-	t_pt3d	**tab;
+	t_map	map;
 
 }	t_all;
