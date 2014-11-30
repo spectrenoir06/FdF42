@@ -38,7 +38,7 @@ typedef struct		s_line
 	int				dy;
 }					t_line;
 
-void		ft_draw_pixel(t_env env, t_pt2d p, t_color c);
+void		ft_draw_pixel2d(t_env env, t_pt2d p, t_color c);
 void		ft_draw_line2d(t_env env, t_pt2d p1, t_pt2d p2, t_color c);
 void		ft_draw_rect2d(t_env env, t_rect r, t_color c);
 t_rect		ft_new_rect(t_pt2d p1, t_pt2d p2);

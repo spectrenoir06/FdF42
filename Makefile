@@ -6,7 +6,7 @@
 #    By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 10:11:24 by adoussau          #+#    #+#              #
-#    Updated: 2014/11/30 19:52:23 by adoussau         ###   ########.fr        #
+#    Updated: 2014/11/30 20:19:25 by adoussau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,22 @@ $(NAME): $(OBJ) libft/libft.a lib2d/lib2d.a
 %.o: %.c
 	@$(CC) -O3 -I $(LIBFT) -I $(LIB2D)  -o $@ -c $? $(FLAGS)
 
+lib2d/lib2d.a:
+	make -C lib2d
+
+libft/libft.a:
+	make -C libft
+
 .PHONY: clean fclean re
 
 clean:
 	@rm -f $(OBJ)
+	@make -C libft clean
+	@make -C lib2d clean
 
 fclean: clean
 	@rm -f $(NAME)
+	make -C lib2d fclean
+	make -C lib2d fclean
 
 re: fclean all
