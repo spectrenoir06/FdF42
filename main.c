@@ -17,8 +17,6 @@
 #include "libft.h"
 #include "main.h"
 
-int MULTI = 5;
-
 int moy(int x1, int y1, int x2, int y2, t_pt3d **map)
 {
 	return ((map[x1][y1].z + map[x2][y2].z) / 2.0);
@@ -46,14 +44,14 @@ void	draw_map(t_all *all)
 		{
 			c1 = map(moy(x, y, x + 1, y, all->map.tab), all->map.min, all->map.max, 0, 255);
 			ft_draw_line3d(all->env,
-				ft_point3d_mul(all->map.tab[x][y], MULTI),
-				ft_point3d_mul(all->map.tab[x + 1][y], MULTI),
-				ft_rgb_to_color(255, 200, 255 - c1));
+				ft_point3d_mul(all->map.tab[x][y], 20),
+				ft_point3d_mul(all->map.tab[x + 1][y], 20),
+				ft_rgb_to_color(255, 255, 255 - c1));
 			c1 = map(moy(x, y, x, y + 1, all->map.tab), all->map.min, all->map.max, 0, 255);
 			ft_draw_line3d(all->env,
-				ft_point3d_mul(all->map.tab[x][y + 1], MULTI),
-				ft_point3d_mul(all->map.tab[x][y], MULTI),
-				ft_rgb_to_color(255, 200 , 255 - c1));
+				ft_point3d_mul(all->map.tab[x][y + 1], 20),
+				ft_point3d_mul(all->map.tab[x][y], 20),
+				ft_rgb_to_color(255, 255 , 255 - c1));
 			x++;
 		}
 		y++;
@@ -63,9 +61,9 @@ void	draw_map(t_all *all)
 	{
 		c1 = map(moy(x, y, x + 1, y, all->map.tab), all->map.min, all->map.max, 0, 255);
 		ft_draw_line3d(all->env,
-				ft_point3d_mul(all->map.tab[x][y], MULTI),
-				ft_point3d_mul(all->map.tab[x + 1][y], MULTI),
-				ft_rgb_to_color(250, 200, 255 - c1));
+				ft_point3d_mul(all->map.tab[x][y], 20),
+				ft_point3d_mul(all->map.tab[x + 1][y], 20),
+				ft_rgb_to_color(255, 255, 255 - c1));
 		x++;
 	}
 	y = 0;
@@ -75,7 +73,7 @@ void	draw_map(t_all *all)
 		ft_draw_line3d(all->env,
 				ft_point3d_mul(all->map.tab[x][y], 20),
 				ft_point3d_mul(all->map.tab[x][y + 1], 20),
-				ft_rgb_to_color(250, 200, 255 - c1));
+				ft_rgb_to_color(255, 255, 255 - c1));
 		y++;
 	}
 }
@@ -84,10 +82,6 @@ int		mouse_press(int button, int x, int y, t_all *all)
 {
 	(void)all;
 	printf("%d , x = %d , y = %d\n", button, x, y);
-	if (button == 5)
-		MULTI++;
-	if (button == 4)
-		MULTI--;
 	return (0);
 }
 
