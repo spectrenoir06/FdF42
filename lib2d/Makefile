@@ -6,27 +6,33 @@
 #    By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 10:11:24 by adoussau          #+#    #+#              #
-#    Updated: 2014/11/30 19:41:48 by adoussau         ###   ########.fr        #
+#    Updated: 2014/11/30 19:09:03 by adoussau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fdf
-SRC		= main.c
+NAME	= lib2d.a
+SRC		=	t_pt2d.c \
+			t_pt3d.c \
+			color.c
 
-LIBFT	= 	libft/includes
-LIB2D	=	lib2d/includes
+HEADDIR	= includes/
 
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
-FLAGS	= -Wall -Werror -Wextra -L/usr/X11/lib -lmlx -lXext -lX11
+FLAGS	= -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OBJ) libft/libft.a lib2d/lib2d.a
-	@$(CC) -O3 -I $(LIBFT) -I $(LIB2D) -L libft/ -L lib2d/ -lft -o $(NAME) $(OBJ) $(FLAGS)
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 %.o: %.c
-	@$(CC) -O3 -I $(LIBFT) -I $(LIB2D)  -o $@ -c $? $(FLAGS)
+	@$(CC) -O3 -I $(HEADDIR) -o $@ -I . -c $? $(FLAGS)
+
+dyn: 
+	@gcc -fPIC -Wall -Werror -Wextra -c $(SRC)
+	@gcc -fPIC -Werror -Wall -Wextra -shared -o libft.so $(OBJ)
 
 .PHONY: clean fclean re
 

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib2d.h                                            :+:      :+:    :+:   */
+/*   t_pt3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/24 16:18:43 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/24 19:13:50 by adoussau         ###   ########.fr       */
+/*   Created: 2014/11/30 18:28:14 by adoussau          #+#    #+#             */
+/*   Updated: 2014/11/30 18:28:15 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB2D_H
-# define LIB2D_H
+#ifndef T_PT3D_H
+# define T_PT3D_H
 
-# include <mlx.h>
-# include <math.h>
-# include <stdlib.h>
+# include "lib2d.h"
 
-# define SCREEN_SIZE_X 2560
-# define SCREEN_SIZE_Y 1440
-
-typedef unsigned char	t_byte;
-typedef unsigned char	t_uint8;
-typedef unsigned short	t_uint16;
-typedef unsigned long	t_uint32;
-
-typedef struct		s_env
+typedef struct		s_pt3d
 {
-	void			*mlx;
-	void			*win;
-}					t_env;
+	int				x;
+	int				y;
+	int				z;
+}					t_pt3d;
+
+t_pt3d				ft_new_point3d(int x, int y, int z);
+void				ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c);
+void				ft_draw_pixel3d(t_env env, t_pt3d p, t_color c);
+t_pt3d				ft_point3d_mul(t_pt3d p, int k);
+t_pt2d				ft_3d_to_2d(t_pt3d p);
 
 #endif

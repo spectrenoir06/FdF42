@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lib2d.h"
+
 void		ft_draw_pixel2d(t_env env, t_pt2d p, t_color c)
 {
-	mlx_pixel_put(env.mlx, env.win, p.x, p.y, ft_colortoint(c));
+	mlx_pixel_put(env.mlx, env.win, p.x, p.y, ft_color_to_int(c));
 }
 
 static void		ft_draw_line_sub1(t_env env, t_line l)
