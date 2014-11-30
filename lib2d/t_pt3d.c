@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "lib2d.h"
+#include "lib2d.h"
 
 void		ft_draw_pixel3d(t_env env, t_pt3d p, t_color c)
 {
@@ -19,7 +19,6 @@ void		ft_draw_pixel3d(t_env env, t_pt3d p, t_color c)
 	t = ft_3d_to_2d(p);
 	mlx_pixel_put(env.mlx, env.win, t.x, t.y, ft_color_to_int(c));
 }
-
 
 void		ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c)
 {

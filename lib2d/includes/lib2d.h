@@ -34,5 +34,6 @@ typedef struct		s_env
 # include "color.h"
 # include "t_pt2d.h"
 # include "t_pt3d.h"
+# include "line.h"
 
 #endif

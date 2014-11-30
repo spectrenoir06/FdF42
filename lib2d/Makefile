@@ -6,13 +6,14 @@
 #    By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 10:11:24 by adoussau          #+#    #+#              #
-#    Updated: 2014/11/30 19:09:03 by adoussau         ###   ########.fr        #
+#    Updated: 2014/11/30 20:06:41 by adoussau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= lib2d.a
 SRC		=	t_pt2d.c \
 			t_pt3d.c \
+			line.c	\
 			color.c
 
 HEADDIR	= includes/
