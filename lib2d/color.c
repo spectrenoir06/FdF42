@@ -1,34 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib2d.h                                            :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/24 16:18:43 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/24 19:13:50 by adoussau         ###   ########.fr       */
+/*   Created: 2014/11/30 18:19:33 by adoussau          #+#    #+#             */
+/*   Updated: 2014/11/30 18:19:35 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB2D_H
-# define LIB2D_H
-
-# include <mlx.h>
-# include <math.h>
-# include <stdlib.h>
-
-# define SCREEN_SIZE_X 2560
-# define SCREEN_SIZE_Y 1440
-
-typedef unsigned char	t_byte;
-typedef unsigned char	t_uint8;
-typedef unsigned short	t_uint16;
-typedef unsigned long	t_uint32;
-
-typedef struct		s_env
+int			ft_color_to_int(t_color c)
 {
-	void			*mlx;
-	void			*win;
-}					t_env;
+	int		i;
 
-#endif
+	i = c.r;
+	i = i << 8;
+	i += c.g;
+	i = i << 8;
+	i += c.b;
+	return (i);
+}
+
+t_color		ft_int_to_color(int c)
+{
+	t_color i;
+
+	c = (c & 0x00FFFFFF);
+	i.b = (c & 0xFF);
+	c = c >> 8;
+	i.g = (c & 0xFF);
+	c = c << 8;
+	i.r = c;
+	return (i);
+}
+
+t_color		ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b)
+{
+	t_color t;
+
+	t.r = r;
+	t.g = g;
+	t.b = b;
+	return (t);
+}

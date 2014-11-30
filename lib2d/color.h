@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib2d.h                                            :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/24 16:18:43 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/24 19:13:50 by adoussau         ###   ########.fr       */
+/*   Created: 2014/11/30 18:25:51 by adoussau          #+#    #+#             */
+/*   Updated: 2014/11/30 18:26:34 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB2D_H
-# define LIB2D_H
+#ifndef COLOR_H
+# define COLOR_H
 
-# include <mlx.h>
-# include <math.h>
-# include <stdlib.h>
-
-# define SCREEN_SIZE_X 2560
-# define SCREEN_SIZE_Y 1440
-
-typedef unsigned char	t_byte;
-typedef unsigned char	t_uint8;
-typedef unsigned short	t_uint16;
-typedef unsigned long	t_uint32;
-
-typedef struct		s_env
+typedef struct		s_color
 {
-	void			*mlx;
-	void			*win;
-}					t_env;
+	t_byte			r;
+	t_byte			g;
+	t_byte			b;
+}					t_color;
+
+int			ft_color_to_int(t_color c);
+t_color		ft_int_to_color(int c);
+f_color		ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b);
+
 
 #endif
