@@ -17,10 +17,18 @@
 #include "libft.h"
 #include "main.h"
 
-int moy(int x, int y)
+int MULTI = 5;
+
+int moy(int x1, int y1, int x2, int y2, t_pt3d **map)
 {
-	return ((x + y) / 2);
+	return ((map[x1][y1].z + map[x2][y2].z) / 2.0);
 }
+
+int map(int x, int in_min, int in_max, int out_min, int out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 
 void	draw_map(t_all *all)
 {
@@ -29,35 +37,45 @@ void	draw_map(t_all *all)
 
 	x = 0;
 	y = 0;
-	while (y < 10)
+
+	unsigned char c1;
+	while (y < (all->map.ly - 2))
 	{
 		x = 0;
-		while (x < 18)
+		while (x < (all->map.lx - 2))
 		{
-			ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y], 20),
-				ft_point3d_mul(all->map.tab[x + 1][y], 20),
-				ft_rgb_to_color(255, 255, 255 -  (all->map.tab[x][y].z * 10)));
-			ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y + 1], 20),
-				ft_point3d_mul(all->map.tab[x][y], 20),
-				ft_rgb_to_color(255, 255, 255 -  (all->map.tab[x][y].z * 10)));
+			c1 = map(moy(x, y, x + 1, y, all->map.tab), all->map.min, all->map.max, 0, 255);
+			ft_draw_line3d(all->env,
+				ft_point3d_mul(all->map.tab[x][y], MULTI),
+				ft_point3d_mul(all->map.tab[x + 1][y], MULTI),
+				ft_rgb_to_color(255, 200, 255 - c1));
+			c1 = map(moy(x, y, x, y + 1, all->map.tab), all->map.min, all->map.max, 0, 255);
+			ft_draw_line3d(all->env,
+				ft_point3d_mul(all->map.tab[x][y + 1], MULTI),
+				ft_point3d_mul(all->map.tab[x][y], MULTI),
+				ft_rgb_to_color(255, 200 , 255 - c1));
 			x++;
 		}
 		y++;
 	}
 	x = 0;
-	while (x < 18)
+	while (x < (all->map.lx - 2))
 	{
-		ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y], 20),
-				ft_point3d_mul(all->map.tab[x + 1][y], 20),
-				ft_rgb_to_color(250, 255, 255 -  (all->map.tab[x][y].z * 10)));
+		c1 = map(moy(x, y, x + 1, y, all->map.tab), all->map.min, all->map.max, 0, 255);
+		ft_draw_line3d(all->env,
+				ft_point3d_mul(all->map.tab[x][y], MULTI),
+				ft_point3d_mul(all->map.tab[x + 1][y], MULTI),
+				ft_rgb_to_color(250, 200, 255 - c1));
 		x++;
 	}
 	y = 0;
-	while (y < 10)
+	while (y < (all->map.ly - 2))
 	{
-		ft_draw_line3d(all->env, ft_point3d_mul(all->map.tab[x][y], 20),
+		c1 = map(moy(x, y, x, y + 1, all->map.tab), all->map.min, all->map.max, 0, 255);
+		ft_draw_line3d(all->env,
+				ft_point3d_mul(all->map.tab[x][y], 20),
 				ft_point3d_mul(all->map.tab[x][y + 1], 20),
-				ft_rgb_to_color(250, 255, 255 -  (all->map.tab[x][y].z * 10)));
+				ft_rgb_to_color(250, 200, 255 - c1));
 		y++;
 	}
 }
@@ -66,6 +84,10 @@ int		mouse_press(int button, int x, int y, t_all *all)
 {
 	(void)all;
 	printf("%d , x = %d , y = %d\n", button, x, y);
+	if (button == 5)
+		MULTI++;
+	if (button == 4)
+		MULTI--;
 	return (0);
 }
 
@@ -79,7 +101,7 @@ int		key_press(int keycode, t_all *all)
 int		loop(t_all *all)
 {
 	draw_map(all);
-	usleep(5000);
+	//usleep(5000);
 	return (0);
 }
 
@@ -99,7 +121,9 @@ int		main(int argc, char **argv)
 	int fd;
 
 	all.env.mlx = mlx_init();
-	all.env.win = mlx_new_window(all.env.mlx, 1280, 720, "Hello world!");
+	all.env.win = mlx_new_window(all.env.mlx, 2560, 1440, "Hello world!");
+	all.map.max = 0;
+	all.map.min = 0;
 	lst = NULL;
 	x = 0;
 	y = 0;
@@ -132,10 +156,15 @@ int		main(int argc, char **argv)
 		while (lst)
 		{
 			point = *((t_pt3d *)lst->content);
-			point.z = -point.z;
+			if (all.map.min > point.z)
+				all.map.min = point.z;
+			if (all.map.max < point.z)
+				all.map.max = point.z;
 			all.map.tab[point.x][point.y] = point;
 			lst = lst->next;
 		}
+		printf("x = %d, y = %d\n",x,y);
+		printf("max = %d, min = %d\n",all.map.max,all.map.min);
 		ft_lstsimpledel(&lsttmp);
 		all.map.lx = x;
 		all.map.ly = y;

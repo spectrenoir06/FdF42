@@ -15,6 +15,8 @@ typedef struct s_map
 	int		lx;
 	int		ly;
 	t_pt3d	**tab;
+	int		max;
+	int		min;
 }			t_map;
 
 typedef struct s_all
