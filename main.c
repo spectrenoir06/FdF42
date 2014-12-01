@@ -67,44 +67,45 @@ void	file_to_lst(char *file, t_all *all, t_list **lst)
 	}
 }
 
+void	list_to_map(t_all *all, t_list *lst)
+{
+	int		i;
+	t_pt3d	point;
+	t_list	*lsttmp;
+
+	i = 0;
+	lsttmp = lst;
+	all->map.tab = (t_pt3d **)malloc(sizeof(t_pt3d *) * all->map.lx);
+	while (i < all->map.lx)
+		all->map.tab[i++] = malloc(sizeof(t_pt3d) * all->map.ly);
+	while (lst)
+	{
+		point = *((t_pt3d *)lst->content);
+		if (all->map.min > point.z)
+			all->map.min = point.z;
+		if (all->map.max < point.z)
+			all->map.max = point.z;
+		all->map.tab[point.x][point.y] = point;
+		lst = lst->next;
+	}
+	ft_lstsimpledel(&lsttmp);
+}
+
 int		main(int argc, char **argv)
 {
 	t_all	all;
 	t_list	*lst;
-	t_list	*lsttmp;
-	t_pt3d	point;
-	int		x;
-	int		y;
-	int		i;
-	lst = NULL;
 
+	lst = NULL;
 	all.env.mlx = mlx_init();
-	all.env.win = mlx_new_window(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y, "Hello world!");
+	all.env.win = mlx_new_window(all.env.mlx,
+		SCREEN_SIZE_X, SCREEN_SIZE_Y, "Fdf");
 	all.map.max = 0;
 	all.map.min = 0;
-	x = 0;
-	y = 0;
-	i = 0;
 	if (argc > 1)
 	{
 		file_to_lst(argv[1], &all, &lst);
-		x = all.map.lx;
-		y = all.map.ly;
-		lsttmp = lst;
-		all.map.tab = (t_pt3d **)malloc(sizeof(t_pt3d *) * x);
-		while (i < x)
-			all.map.tab[i++] = malloc(sizeof(t_pt3d) * y);
-		while (lst)
-		{
-			point = *((t_pt3d *)lst->content);
-			if (all.map.min > point.z)
-				all.map.min = point.z;
-			if (all.map.max < point.z)
-				all.map.max = point.z;
-			all.map.tab[point.x][point.y] = point;
-			lst = lst->next;
-		}
-		ft_lstsimpledel(&lsttmp);
+		list_to_map(&all, lst);
 	}
 	else
 	{

@@ -64,6 +64,7 @@ void			ft_draw_line2d(t_env env, t_pt2d p1, t_pt2d p2, t_color c)
 	l.p2 = p2;
 	l.c1 = c;
 	l.c2 = c;
+	ft_draw_pixel2d(env, p1, c);
 	if (l.dx > l.dy)
 		ft_draw_line_sub1(env, l);
 	else
