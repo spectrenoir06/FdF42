@@ -38,49 +38,64 @@ int		loop(t_all *all)
 	return (0);
 }
 
+t_list	*file_to_lst(char *file, t_all *all)
+{
+	t_list	*lst;
+	char	**tmp;
+	char	**tmp2;
+	char	*line;
+	t_pt3d	point;
+	int		fd;
+
+	all->map.lx = 0;
+	all->map.ly = 0;
+	lst = NULL;
+	fd = open(file, 'r');
+	while (get_next_line(fd, &line))
+	{
+		tmp = ft_strsplit(line, ' ');
+		tmp2 = tmp;
+		free(line);
+		x = 0;
+		while (*tmp)
+		{
+			point = ft_new_point3d(all->map.lx, all->map.ly, ft_atoi(*tmp));
+			ft_lstsmartpushback(&lst, ft_lstnew(&point, sizeof(t_pt3d)));
+			free(*tmp);
+			tmp++;
+			all->map.lx++;
+		}
+		free(tmp2);
+		all->map.ly++;
+	}
+	all->map.lx = x;
+	all->map.ly = y;
+	return (lst);
+}
+
 int		main(int argc, char **argv)
 {
 	t_all	all;
 	t_list	*lst;
 	t_list	*lsttmp;
-	char	*line;
-	char	**tmp;
-	char	**tmp2;
 	t_pt3d	point;
 	int		x;
 	int		y;
 	int		i;
-	int		fd;
 
 	all.env.mlx = mlx_init();
 	all.env.win = mlx_new_window(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y, "Hello world!");
 	all.map.max = 0;
 	all.map.min = 0;
-	lst = NULL;
 	x = 0;
 	y = 0;
 	i = 0;
 	printf("argc = %d\n", argc);
 	if (argc > 1)
 	{
-		fd = open(argv[1], 'r');
-		while (get_next_line(fd, &line))
-		{
-			tmp = ft_strsplit(line, ' ');
-			tmp2 = tmp;
-			free(line);
-			x = 0;
-			while (*tmp)
-			{
-				point = ft_new_point3d(x, y, ft_atoi(*tmp));
-				ft_lstsmartpushback(&lst, ft_lstnew(&point, sizeof(t_pt3d)));
-				free(*tmp);
-				tmp++;
-				x++;
-			}
-			free(tmp2);
-			y++;
-		}
+		lst = file_to_lst(argv[1], &all);
+		x = all.map.lx;
+		y = all.map.ly;
 		lsttmp = lst;
 		all.map.tab = (t_pt3d **)malloc(sizeof(t_pt3d *) * x);
 		while (i < x)
@@ -98,11 +113,12 @@ int		main(int argc, char **argv)
 		printf("x = %d, y = %d\n", x, y);
 		printf("max = %d, min = %d\n", all.map.max, all.map.min);
 		ft_lstsimpledel(&lsttmp);
-		all.map.lx = x;
-		all.map.ly = y;
 	}
 	else
+	{
 		ft_putstr("pas de fichier\n");
+		return (0);
+	}
 	mlx_key_hook(all.env.win, key_press, &all);
 	mlx_mouse_hook(all.env.win, mouse_press, &all);
 	mlx_loop_hook(all.env.mlx, loop, &all);
