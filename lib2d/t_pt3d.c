@@ -44,7 +44,7 @@ t_pt2d		ft_3d_to_2d(t_pt3d p)
 	return (t);
 }
 
-t_pt3d		ft_point3d_mul(t_pt3d p, int k)
+t_pt3d		ft_3d_mul(t_pt3d p, int k)
 {
 	p.x *= k;
 	p.y *= k;

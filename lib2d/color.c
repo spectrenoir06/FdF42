@@ -37,7 +37,7 @@ t_color		ft_int_to_color(int c)
 	return (i);
 }
 
-t_color		ft_rgb_to_color(unsigned char r, unsigned char g, unsigned char b)
+t_color		ft_rgb(unsigned char r, unsigned char g, unsigned char b)
 {
 	t_color t;
 
