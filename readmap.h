@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   readmap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/28 20:09:54 by adoussau          #+#    #+#             */
-/*   Updated: 2014/11/28 20:10:15 by adoussau         ###   ########.fr       */
+/*   Created: 2014/12/01 20:35:26 by adoussau          #+#    #+#             */
+/*   Updated: 2014/12/01 20:36:00 by adoussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef READMAP_H
+# define READMAP_H
 
-# include "lib2d.h"
+# include "main.h"
 
-typedef struct	s_map
-{
-	int			lx;
-	int			ly;
-	t_pt3d		**tab;
-	int			max;
-	int			min;
-}				t_map;
-
-typedef struct	s_all
-{
-	t_env		env;
-	t_map		map;
-
-}				t_all;
+void	file_to_lst(char *file, t_all *all, t_list **lst);
+void	list_to_map(t_all *all, t_list *lst);
 
 #endif
