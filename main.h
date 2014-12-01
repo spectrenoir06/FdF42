@@ -10,18 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_map
-{
-	int		lx;
-	int		ly;
-	t_pt3d	**tab;
-	int		max;
-	int		min;
-}			t_map;
+#ifndef MAIN_H
+# define MAIN_H
 
-typedef struct s_all
+typedef struct	s_map
 {
-	t_env	env;
-	t_map	map;
+	int			lx;
+	int			ly;
+	t_pt3d		**tab;
+	int			max;
+	int			min;
+}				t_map;
 
-}	t_all;
+typedef struct	s_all
+{
+	t_env		env;
+	t_map		map;
+
+}				t_all;
+
+#endif

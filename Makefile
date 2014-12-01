@@ -6,12 +6,13 @@
 #    By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 10:11:24 by adoussau          #+#    #+#              #
-#    Updated: 2014/11/30 20:19:25 by adoussau         ###   ########.fr        #
+#    Updated: 2014/12/01 15:57:53 by adoussau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= fdf
-SRC		= main.c
+SRC		=	 main.c \
+			fdf.c
 
 LIBFT	= 	libft/includes
 LIB2D	=	lib2d/includes

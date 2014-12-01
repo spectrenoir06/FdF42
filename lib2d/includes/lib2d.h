@@ -16,9 +16,10 @@
 # include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
+# include <unistd.h>
 
-# define SCREEN_SIZE_X 2560
-# define SCREEN_SIZE_Y 1440
+# define SCREEN_SIZE_X 1280
+# define SCREEN_SIZE_Y 720
 
 typedef unsigned char	t_byte;
 typedef unsigned char	t_uint8;
