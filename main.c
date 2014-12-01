@@ -39,8 +39,6 @@ int		loop(t_all *all)
 	return (0);
 }
 
-
-
 int		main(int argc, char **argv)
 {
 	t_all	all;

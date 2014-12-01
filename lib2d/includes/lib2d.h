@@ -18,6 +18,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include "color.h"
+# include "t_pt2d.h"
+# include "t_pt3d.h"
+# include "line.h"
+
 # define SCREEN_SIZE_X 1280
 # define SCREEN_SIZE_Y 720
 
@@ -31,10 +36,5 @@ typedef struct		s_env
 	void			*mlx;
 	void			*win;
 }					t_env;
-
-# include "color.h"
-# include "t_pt2d.h"
-# include "t_pt3d.h"
-# include "line.h"
 
 #endif

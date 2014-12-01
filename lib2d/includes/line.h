@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib2d.h"
+#ifndef LINE_H
+# define LINE_H
+
+# include "lib2d.h"
 
 void			ft_draw_line2d(t_env env, t_pt2d p1, t_pt2d p2, t_color c);
+
+#endif

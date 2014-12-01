@@ -21,9 +21,8 @@ typedef struct		s_color
 	t_byte			b;
 }					t_color;
 
-int			ft_color_to_int(t_color c);
-t_color		ft_int_to_color(int c);
-t_color		ft_rgb(unsigned char r, unsigned char g, unsigned char b);
-
+int					ft_color_to_int(t_color c);
+t_color				ft_int_to_color(int c);
+t_color				ft_rgb(unsigned char r, unsigned char g, unsigned char b);
 
 #endif
