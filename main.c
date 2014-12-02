@@ -18,10 +18,10 @@
 #include "main.h"
 #include "fdf.h"
 #include "readmap.h"
-# include "color.h"
-# include "t_pt2d.h"
-# include "t_pt3d.h"
-# include "line.h"
+#include "color.h"
+#include "t_pt2d.h"
+#include "t_pt3d.h"
+#include "line.h"
 
 int		mouse_press(int button, int x, int y, t_all *all)
 {
