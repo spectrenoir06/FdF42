@@ -21,7 +21,10 @@
 #include "color.h"
 #include "t_pt2d.h"
 #include "t_pt3d.h"
+#include "t_pt2d_img.h"
+#include "t_pt3d_img.h"
 #include "line.h"
+#include "t_img.h"
 
 int		mouse_press(int button, int x, int y, t_all *all)
 {
@@ -47,6 +50,7 @@ int		main(int argc, char **argv)
 {
 	t_all	all;
 	t_list	*lst;
+	t_img	img;
 
 	lst = NULL;
 	all.env.mlx = mlx_init();
@@ -58,6 +62,8 @@ int		main(int argc, char **argv)
 	{
 		file_to_lst(argv[1], &all, &lst);
 		list_to_map(&all, lst);
+		img.img =  mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
+       	img.data = mlx_get_data_addr(img.img, &img.bpp, &img.lx, &img.endian);
 	}
 	else
 	{

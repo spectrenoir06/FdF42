@@ -28,7 +28,7 @@ $(NAME): $(OBJ) libft/libft.a lib2d/lib2d.a
 	@$(CC) -O3 -I $(LIBFT) -I $(LIB2D) libft/libft.a lib2d/lib2d.a -o $(NAME) $(OBJ) $(FLAGS)
 
 %.o: %.c
-	@$(CC) -O3 -I $(LIBFT) -I $(LIB2D)  -o $@ -c $? $(FLAGS)
+	@$(CC) -O3 -I $(LIBFT) -I $(LIB2D) -o $@ -c $? $(FLAGS)
 
 lib2d/lib2d.a:
 	make -C lib2d

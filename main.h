@@ -15,6 +15,7 @@
 
 # include "lib2d.h"
 # include "t_pt3d.h"
+# include "t_img.h"
 
 typedef struct	s_map
 {
@@ -29,6 +30,7 @@ typedef struct	s_all
 {
 	t_env		env;
 	t_map		map;
+	t_img		img;
 
 }				t_all;
 

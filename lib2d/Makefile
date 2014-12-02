@@ -6,17 +6,22 @@
 #    By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 10:11:24 by adoussau          #+#    #+#              #
-#    Updated: 2014/11/30 20:06:41 by adoussau         ###   ########.fr        #
+#    Updated: 2014/12/02 15:38:53 by adoussau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= lib2d.a
 SRC		=	t_pt2d.c \
+			t_pt2d_img.c \
 			t_pt3d.c \
-			line.c	\
+			t_pt3d_img.c \
+			line.c \
+			line_img.c \
+			t_img.c \
 			color.c
 
-HEADDIR	= includes/
+HEADDIR		= includes/
+HEADDIR2	= ../libft/includes/
 
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
@@ -29,7 +34,7 @@ $(NAME): $(OBJ)
 	@ranlib $(NAME)
 
 %.o: %.c
-	@$(CC) -O3 -I $(HEADDIR) -o $@ -I . -c $? $(FLAGS)
+	@$(CC) -O3 -I $(HEADDIR) -o $@ -I $(HEADDIR) -I $(HEADDIR2) -c $? $(FLAGS)
 
 dyn: 
 	@gcc -fPIC -Wall -Werror -Wextra -c $(SRC)
