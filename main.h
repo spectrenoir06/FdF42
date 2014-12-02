@@ -29,7 +29,7 @@ typedef struct	s_all
 	t_env		env;
 	t_map		map;
 	t_img		img;
-
+	int			redraw;
 }				t_all;
 
 #endif

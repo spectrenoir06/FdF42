@@ -28,15 +28,21 @@ int		mouse_press(int button, int x, int y, t_all *all)
 
 int		key_press(int keycode, t_all *all)
 {
-	(void)all;
 	printf("%d = %c\n", keycode, keycode);
+	if (keycode == 'a')
+		all->redraw = 1;
 	return (0);
 }
 
 int		loop(t_all *all)
 {
-	draw_map(all);
-	//mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
+	if (all->redraw)
+	{
+		ft_bzero(all->img.data, all->img.lx * all->img.ly);
+		draw_map(all);
+		mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
+		all->redraw = 0;
+	}
 	return (0);
 }
 
@@ -56,8 +62,10 @@ int		main(int argc, char **argv)
 	{
 		file_to_lst(argv[1], &all, &lst);
 		list_to_map(&all, lst);
-		//img.img =  mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
-       	//img.data = mlx_get_data_addr(img.img, &img.bpp, &img.lx, &img.endian);
+		all.img.img =  mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
+       	all.img.data = mlx_get_data_addr(all.img.img, &all.img.bpp, &all.img.lx, &all.img.endian);
+       	all.img.ly = SCREEN_SIZE_Y; 
+       	printf("bpp = %d , lx = %d, endian = %d \n", all.img.bpp, all.img.lx, all.img.endian);
 	}
 	else
 	{

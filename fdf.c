@@ -35,8 +35,8 @@ void	draw_map_end1(t_all *all)
 	{
 		c1 = remap(moy(all->map.tab[x][y], all->map.tab[x + 1][y]),
 			all->map.min, all->map.max);
-		ft_draw_line3d(all->env, ft_3d_mul(all->map.tab[x][y], 8),
-			ft_3d_mul(all->map.tab[x + 1][y], 8), ft_rgb(255, 255, 255 - c1));
+		ft_draw_line3d_img(all->img, ft_3d_mul(all->map.tab[x][y], 20),
+			ft_3d_mul(all->map.tab[x + 1][y], 20), ft_rgb(255, 255, 255 - c1));
 		x++;
 	}
 }
@@ -53,9 +53,9 @@ void	draw_map_end2(t_all *all)
 	{
 		c1 = remap(moy(all->map.tab[x][y], all->map.tab[x][y + 1]),
 						all->map.min, all->map.max);
-		ft_draw_line3d(all->env,
-				ft_3d_mul(all->map.tab[x][y], 8),
-				ft_3d_mul(all->map.tab[x][y + 1], 8),
+		ft_draw_line3d_img(all->img,
+				ft_3d_mul(all->map.tab[x][y], 20),
+				ft_3d_mul(all->map.tab[x][y + 1], 20),
 				ft_rgb(255, 255, 255 - c1));
 		y++;
 	}
@@ -76,10 +76,10 @@ void	draw_map(t_all *all)
 		while (x < (map.lx - 2))
 		{
 			c1 = remap(moy(map.tab[x][y], map.tab[x + 1][y]), map.min, map.max);
-			ft_draw_line3d(all->env, ft_3d_mul(map.tab[x][y], 20),
+			ft_draw_line3d_img(all->img, ft_3d_mul(map.tab[x][y], 20),
 				ft_3d_mul(map.tab[x + 1][y], 20), ft_rgb(255, 255, 255 - c1));
 			c1 = remap(moy(map.tab[x][y], map.tab[x][y + 1]), map.min, map.max);
-			ft_draw_line3d(all->env, ft_3d_mul(map.tab[x][y + 1], 20),
+			ft_draw_line3d_img(all->img, ft_3d_mul(map.tab[x][y + 1], 20),
 				ft_3d_mul(map.tab[x][y], 20), ft_rgb(255, 255, 255 - c1));
 			x++;
 		}

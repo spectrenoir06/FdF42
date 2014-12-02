@@ -41,3 +41,12 @@ t_rect		ft_new_rect(t_pt2d p1, t_pt2d p2)
 	r.p2 = p2;
 	return (r);
 }
+
+t_pt2d		ft_new_point2d(int x, int y)
+{
+	t_pt2d	p;
+
+	p.x = x;
+	p.y = y;
+	return (p);
+}
