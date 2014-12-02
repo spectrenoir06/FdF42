@@ -36,6 +36,7 @@ int		key_press(int keycode, t_all *all)
 int		loop(t_all *all)
 {
 	draw_map(all);
+	//mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
 	return (0);
 }
 
@@ -43,7 +44,7 @@ int		main(int argc, char **argv)
 {
 	t_all	all;
 	t_list	*lst;
-	t_img	img;
+	//t_img	img;
 
 	lst = NULL;
 	all.env.mlx = mlx_init();
@@ -55,8 +56,8 @@ int		main(int argc, char **argv)
 	{
 		file_to_lst(argv[1], &all, &lst);
 		list_to_map(&all, lst);
-		img.img =  mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
-       	img.data = mlx_get_data_addr(img.img, &img.bpp, &img.lx, &img.endian);
+		//img.img =  mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
+       	//img.data = mlx_get_data_addr(img.img, &img.bpp, &img.lx, &img.endian);
 	}
 	else
 	{
