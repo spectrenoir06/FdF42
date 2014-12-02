@@ -24,13 +24,21 @@ int		mouse_press(int button, int x, int y, t_all *all)
 	printf("%d , x = %d , y = %d\n", button, x, y);
 	if (button == 5)
 	{
-		printf("%d\n",all->img.mult);
 		all->img.mult++;
+		all->redraw=1;
+	}
+	if (button == 6)
+	{
+		all->pad++;
+		all->redraw=1;
+	}
+	if (button == 7)
+	{
+		all->pad--;
 		all->redraw=1;
 	}
 	if (button == 4)
 	{
-		printf("%d\n",all->img.mult);
 		all->img.mult--;
 		all->redraw=1;
 	}
@@ -77,6 +85,7 @@ int		main(int argc, char **argv)
        	all.img.ly = SCREEN_SIZE_Y;
        	all.redraw = 1;
        	all.img.mult = 10;
+       	all.pad = 10;
        	printf("bpp = %d , lx = %d, endian = %d \n", all.img.bpp, all.img.lx, all.img.endian);
 	}
 	else

@@ -30,6 +30,7 @@ typedef struct	s_all
 	t_map		map;
 	t_img		img;
 	int			redraw;
+	int			pad;
 }				t_all;
 
 #endif
