@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_pt3d.h"
-#include "t_pt2d_img.h"
-#include "t_img.h"
+#include "lib2d.h"
 
 void		ft_draw_pixel3d_img(t_img img, t_pt3d p, t_color c)
 {

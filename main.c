@@ -18,13 +18,6 @@
 #include "main.h"
 #include "fdf.h"
 #include "readmap.h"
-#include "color.h"
-#include "t_pt2d.h"
-#include "t_pt3d.h"
-#include "t_pt2d_img.h"
-#include "t_pt3d_img.h"
-#include "line.h"
-#include "t_img.h"
 
 int		mouse_press(int button, int x, int y, t_all *all)
 {

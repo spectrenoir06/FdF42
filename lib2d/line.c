@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "line.h"
+#include "lib2d.h"
 
 static void		ft_draw_line_sub1(t_env env, t_line l)
 {

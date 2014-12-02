@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_pt2d.h"
-#include "t_img.h"
-#include "libft.h"
+#include "lib2d.h"
 
 void		ft_draw_pixel2d_img(t_img img, t_pt2d p, t_color c)
 {

@@ -17,7 +17,6 @@ SRC		=	t_pt2d.c \
 			t_pt3d_img.c \
 			line.c \
 			line_img.c \
-			t_img.c \
 			color.c
 
 HEADDIR		= includes/

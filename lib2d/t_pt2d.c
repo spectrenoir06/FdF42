@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_pt2d.h"
+#include "lib2d.h"
 
 void		ft_draw_pixel2d(t_env env, t_pt2d p, t_color c)
 {
