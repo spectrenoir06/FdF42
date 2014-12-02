@@ -48,6 +48,7 @@ typedef struct s_img
 	int			lx;
 	int			ly;
 	int			endian;
+	int			mult;
 }				t_img;
 
 typedef struct		s_pt2d
