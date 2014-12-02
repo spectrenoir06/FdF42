@@ -14,6 +14,7 @@
 # define MAIN_H
 
 # include "lib2d.h"
+# include "t_pt3d.h"
 
 typedef struct	s_map
 {

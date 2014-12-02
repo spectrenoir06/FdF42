@@ -14,6 +14,9 @@
 # define T_PT3D_H
 
 # include "lib2d.h"
+# include "t_pt3d.h"
+# include "t_pt2d.h"
+# include "color.h"
 
 typedef struct		s_pt3d
 {

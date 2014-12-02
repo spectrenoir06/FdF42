@@ -12,13 +12,13 @@
 
 #ifndef COLOR_H
 # define COLOR_H
-# include "lib2d.h"
+# include "color.h"
 
 typedef struct		s_color
 {
-	t_byte			r;
-	t_byte			g;
-	t_byte			b;
+	unsigned char			r;
+	unsigned char			g;
+	unsigned char			b;
 }					t_color;
 
 int					ft_color_to_int(t_color c);
