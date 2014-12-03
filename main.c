@@ -24,25 +24,25 @@ int		mouse_press(int button, int x, int y, t_all *all)
 	printf("%d , x = %d , y = %d\n", button, x, y);
 	if (button == 4)
 	{
-		all->img.mult++;
+		all->img.mult+=0.3;
 		all->redraw=1;
 	}
 	if (button == 1)
 	{
 		all->pad++;
-		all->img.mult++;
+		//all->img.mult;
 		all->redraw=1;
 	}
 	if (button == 3)
 	{
 		all->pad--;
-		all->img.mult--;
+		//all->img.mult--;
 		all->redraw=1;
 	}
 	if (button == 5)
 	{
-		all->img.mult--;
-		all->redraw=4;
+		all->img.mult-=0.3;
+		all->redraw=1;
 	}
 	return (0);
 }

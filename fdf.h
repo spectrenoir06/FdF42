@@ -16,5 +16,6 @@
 # include "lib2d.h"
 
 void	draw_map(t_all *all);
+void	draw_map_fill(t_all *all);
 
 #endif

@@ -150,3 +150,5 @@ void	draw_map(t_all *all)
 	draw_map_end1(all);
 	draw_map_end2(all);
 }
+
+

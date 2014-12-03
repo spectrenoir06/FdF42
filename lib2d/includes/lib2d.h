@@ -90,7 +90,7 @@ t_pt2d				ft_3d_to_2d(t_pt3d p);
 
 t_rect				ft_new_rect(t_pt2d p1, t_pt2d p2);
 
-t_pt3d				ft_3d_mul(t_pt3d p, int k);
+t_pt3d				ft_3d_mul(t_pt3d p, float k);
 
 void				ft_draw_pixel2d(t_env env, t_pt2d p, t_color c);
 void				ft_draw_rect2d(t_env env, t_rect r, t_color c);
