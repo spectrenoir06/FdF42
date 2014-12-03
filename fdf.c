@@ -79,7 +79,7 @@ int		moy(t_pt3d p1, t_pt3d p2)
 
 int		remap(int x, int inmi, int inma)
 {
-	return (x - inmi) * (15 - 0) / (inma - inmi) + 0;
+	return (x - inmi) * (14 - 0) / (inma - inmi) + 0;
 }
 
 void	draw_map_end1(t_all *all)
