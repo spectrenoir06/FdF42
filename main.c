@@ -22,25 +22,27 @@
 int		mouse_press(int button, int x, int y, t_all *all)
 {
 	printf("%d , x = %d , y = %d\n", button, x, y);
-	if (button == 5)
+	if (button == 4)
 	{
 		all->img.mult++;
 		all->redraw=1;
 	}
-	if (button == 6)
+	if (button == 1)
 	{
 		all->pad++;
+		all->img.mult++;
 		all->redraw=1;
 	}
-	if (button == 7)
+	if (button == 3)
 	{
 		all->pad--;
-		all->redraw=1;
-	}
-	if (button == 4)
-	{
 		all->img.mult--;
 		all->redraw=1;
+	}
+	if (button == 5)
+	{
+		all->img.mult--;
+		all->redraw=4;
 	}
 	return (0);
 }
@@ -87,6 +89,7 @@ int		main(int argc, char **argv)
        	all.img.mult = 10;
        	all.pad = 10;
        	printf("bpp = %d , lx = %d, endian = %d \n", all.img.bpp, all.img.lx, all.img.endian);
+       	printf("max = %d , min = %d\n", all.map.max, all.map.min);
 	}
 	else
 	{

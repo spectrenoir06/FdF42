@@ -32,7 +32,7 @@ t_color		ft_int_to_color(int c)
 	i.b = (c & 0xFF);
 	c = c >> 8;
 	i.g = (c & 0xFF);
-	c = c << 8;
+	c = c >> 8;
 	i.r = c;
 	return (i);
 }
