@@ -95,7 +95,7 @@ void	draw_map_end1(t_all *all)
 		c1 = remap(moy(all->map.tab[x][y], all->map.tab[x + 1][y]),
 			all->map.min, all->map.max);
 		ft_draw_line3d_img(all->img, ft_3d_mul(all->map.tab[x][y], all->pad),
-			ft_3d_mul(all->map.tab[x + 1][y], all->pad), ft_rgb(c1/2.0, 0x40, 0));
+			ft_3d_mul(all->map.tab[x + 1][y], all->pad), ft_int_to_color(degra[c1]));
 		x++;
 	}
 }
@@ -115,7 +115,7 @@ void	draw_map_end2(t_all *all)
 		ft_draw_line3d_img(all->img,
 				ft_3d_mul(all->map.tab[x][y], all->pad),
 				ft_3d_mul(all->map.tab[x][y + 1], all->pad),
-				ft_rgb(c1/2.0, 0x40, 0));
+				ft_int_to_color(degra[c1]));
 		y++;
 	}
 }
