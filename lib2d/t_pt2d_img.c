@@ -12,12 +12,20 @@
 
 #include "lib2d.h"
 
+int			ft_get_pixel_img(t_img img, t_pt2d p)
+{
+	if ((p.x > 0) && (p.x < (img.lx / 4) && (p.y > 0) && (p.y < img.ly)))
+		return (int)(img.data[p.x * 4 + (p.y * img.lx)]);
+		return (-1);
+	}
+
 int			ft_draw_pixel2d_img(t_img img, t_pt2d p, t_color c)
 {
 	unsigned int i;
 
 	i = ft_color_to_int(c);
-	if ((p.x > 0) && (p.x < (img.lx / 4) && (p.y > 0) && (p.y < img.ly)))
+	if ((p.x > 0) && (p.x < (img.lx / 4) && (p.y > 0) && (p.y < img.ly)) &&
+		!ft_get_pixel_img(img, p))
 	{
 		ft_memcpy(&(img.data[p.x * 4 + (p.y * img.lx)]), &i,
 			(size_t)(sizeof(int)));
@@ -25,13 +33,6 @@ int			ft_draw_pixel2d_img(t_img img, t_pt2d p, t_color c)
 	}
 	else
 		return (0);
-}
-
-int			ft_get_pixel_img(t_img img, t_pt2d p)
-{
-	if ((p.x > 0) && (p.x < (img.lx / 4) && (p.y > 0) && (p.y < img.ly)))
-		return (int)(img.data[p.x * 4 + (p.y * img.lx)]);
-	return (-1);
 }
 
 void		ft_fill(t_img img, t_pt2d p, t_color c)

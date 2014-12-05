@@ -29,12 +29,11 @@ void	draw_map_h(t_all *all)
 	int		y;
 	t_byte	c1;
 
-	x = 0;
-	y = 0;
-	while (y < (all->map.ly - 1))
+	y = (all->map.ly - 1);
+	while (y >= 0)
 	{
-		x = 0;
-		while (x < (all->map.lx - 2))
+		x = (all->map.lx - 2);
+		while (x >= 0)
 		{
 			c1 = remap(moy(all->map.tab[x][y], all->map.tab[x + 1][y]),
 			all->map.min, all->map.max);
@@ -42,9 +41,9 @@ void	draw_map_h(t_all *all)
 			ft_3d_mul(all->map.tab[x][y], all->pad),
 			ft_3d_mul(all->map.tab[x + 1][y], all->pad),
 			ft_int_to_color(all->palette[c1]));
-			x++;
+			x--;
 		}
-		y++;
+		y--;
 	}
 }
 
@@ -54,11 +53,11 @@ void	draw_map_v(t_all *all)
 	int		y;
 	t_byte	c1;
 
-	x = 0;
-	while (x < (all->map.lx - 1))
+	x = (all->map.lx - 1);
+	while (x >= 0)
 	{
-		y = 0;
-		while (y < (all->map.ly - 2))
+		y = (all->map.ly - 2);
+		while (y >= 0)
 		{
 			c1 = remap(moy(all->map.tab[x][y], all->map.tab[x][y + 1]),
 				all->map.min, all->map.max);
@@ -66,9 +65,9 @@ void	draw_map_v(t_all *all)
 				ft_3d_mul(all->map.tab[x][y], all->pad),
 				ft_3d_mul(all->map.tab[x][y + 1], all->pad),
 				ft_int_to_color(all->palette[c1]));
-			y++;
+			y--;
 		}
-		x++;
+		x--;
 	}
 }
 
