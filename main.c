@@ -25,24 +25,22 @@ int		mouse_press(int button, int x, int y, t_all *all)
 	if (button == 4)
 	{
 		all->img.mult++;
-		all->redraw=1;
+		all->redraw = 1;
 	}
 	if (button == 1)
 	{
 		all->pad++;
-		//all->img.mult;
-		all->redraw=1;
+		all->redraw = 1;
 	}
 	if (button == 3)
 	{
 		all->pad--;
-		//all->img.mult--;
-		all->redraw=1;
+		all->redraw = 1;
 	}
 	if (button == 5)
 	{
 		all->img.mult--;
-		all->redraw=1;
+		all->redraw = 1;
 	}
 	return (0);
 }
@@ -72,7 +70,6 @@ int		main(int argc, char **argv)
 	t_all	all;
 	t_list	*lst;
 
-	lst = NULL;
 	all.env.mlx = mlx_init();
 	all.env.win = mlx_new_window(all.env.mlx,
 		SCREEN_SIZE_X, SCREEN_SIZE_Y, "Fdf");
@@ -82,23 +79,16 @@ int		main(int argc, char **argv)
 	{
 		file_to_lst(argv[1], &all, &lst);
 		list_to_map(&all, lst);
-		all.img.img =  mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
-       	all.img.data = mlx_get_data_addr(all.img.img, &all.img.bpp, &all.img.lx, &all.img.endian);
-       	all.img.ly = SCREEN_SIZE_Y;
-       	all.redraw = 1;
-       	all.img.mult = 10;
-       	all.pad = 10;
-       	printf("bpp = %d , lx = %d, endian = %d \n", all.img.bpp, all.img.lx, all.img.endian);
-       	printf("max = %d , min = %d\n", all.map.max, all.map.min);
+		all.img.img = mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
+		all.img.data = mlx_get_data_addr(all.img.img, &all.img.bpp,
+			&all.img.lx, &all.img.endian);
+		fill_pallette(all.palette);
+		mlx_key_hook(all.env.win, key_press, &all);
+		mlx_mouse_hook(all.env.win, mouse_press, &all);
+		mlx_loop_hook(all.env.mlx, loop, &all);
+		mlx_loop(all.env.mlx);
 	}
 	else
-	{
 		ft_putstr("pas de fichier\n");
-		return (0);
-	}
-	mlx_key_hook(all.env.win, key_press, &all);
-	mlx_mouse_hook(all.env.win, mouse_press, &all);
-	mlx_loop_hook(all.env.mlx, loop, &all);
-	mlx_loop(all.env.mlx);
 	return (0);
 }

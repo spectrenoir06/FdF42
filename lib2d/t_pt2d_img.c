@@ -19,7 +19,7 @@ void		ft_draw_pixel2d_img(t_img img, t_pt2d p, t_color c)
 	i = ft_color_to_int(c);
 	if ((p.x > 0) && (p.x < (img.lx / 4) && (p.y > 0) && (p.y < img.ly)))
 		ft_memcpy(&(img.data[p.x * 4 + (p.y * img.lx)]), &i,
-			(size_t)sizeof(int));
+			(size_t)(sizeof(int)));
 }
 
 void		ft_draw_rect2d_img(t_img img, t_rect r, t_color c)

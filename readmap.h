@@ -17,5 +17,6 @@
 
 void	file_to_lst(char *file, t_all *all, t_list **lst);
 void	list_to_map(t_all *all, t_list *lst);
+void	fill_pallette(int tab[15]);
 
 #endif
