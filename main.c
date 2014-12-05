@@ -59,6 +59,7 @@ int		loop(t_all *all)
 	{
 		ft_bzero(all->img.data, all->img.lx * all->img.ly);
 		draw_map(all);
+		ft_fill(all->img, ft_new_point2d(10,10),ft_rgb(255,255,255));
 		mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
 		all->redraw = 0;
 	}
