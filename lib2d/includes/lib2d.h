@@ -17,7 +17,7 @@
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include "libft.h"
+# include "libft.h"
 
 # define SCREEN_SIZE_X 2560
 # define SCREEN_SIZE_Y 1440
@@ -40,16 +40,16 @@ typedef struct		s_color
 	unsigned char			b;
 }					t_color;
 
-typedef struct s_img
+typedef struct		s_img
 {
-	char		*data;
-	void		*img;
-	int			bpp;
-	int			lx;
-	int			ly;
-	int			endian;
-	int			mult;
-}				t_img;
+	char			*data;
+	void			*img;
+	int				bpp;
+	int				lx;
+	int				ly;
+	int				endian;
+	int				mult;
+}					t_img;
 
 typedef struct		s_pt2d
 {
@@ -81,7 +81,7 @@ typedef struct		s_line
 	int				dy;
 }					t_line;
 
-t_pt2d		ft_new_point2d(int x, int y);
+t_pt2d				ft_new_point2d(int x, int y);
 
 void				ft_draw_pixel3d(t_env env, t_pt3d p, t_color c);
 t_pt3d				ft_new_point3d(int x, int y, int z);
@@ -105,8 +105,8 @@ t_color				ft_rgb(unsigned char r, unsigned char g, unsigned char b);
 void				ft_draw_line2d(t_env env, t_pt2d p1, t_pt2d p2, t_color c);
 void				ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c);
 
-void				ft_draw_line2d_img(t_img img, t_pt2d p1, t_pt2d p2, t_color c);
-void				ft_draw_line3d_img(t_img img, t_pt3d p1, t_pt3d p2, t_color c);
-
+void				ft_draw_line2d_img(t_img i, t_pt2d p, t_pt2d q, t_color c);
+void				ft_draw_line3d_img(t_img i, t_pt3d p, t_pt3d q, t_color c);
+void				ft_fill(t_img img, t_pt2d p, t_color c);
 
 #endif
