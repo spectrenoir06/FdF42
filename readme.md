@@ -1,5 +1,5 @@
 FdF
 ==========
 
-![alt tag](screenshot/menu.png)
-![alt tag](screenshot/game.png)
+![alt tag](screenshot/1.png)
+![alt tag](screenshot/2.png)
