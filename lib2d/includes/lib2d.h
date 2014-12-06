@@ -86,7 +86,7 @@ t_pt2d				ft_new_point2d(int x, int y);
 void				ft_draw_pixel3d(t_env env, t_pt3d p, t_color c);
 t_pt3d				ft_new_point3d(int x, int y, int z);
 
-void		ft_draw_pixel3d_img(t_img img, t_pt3d p, t_color c);
+void				ft_draw_pixel3d_img(t_img img, t_pt3d p, t_color c);
 
 t_pt2d				ft_3d_to_2d(t_pt3d p);
 

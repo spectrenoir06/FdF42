@@ -40,7 +40,7 @@ int		mouse_press(int button, int x, int y, t_all *all)
 	if (button == 5)
 	{
 		if (all->img.mult)
-			all->img.mult -= 0.5;
+			all->img.mult--;
 		all->redraw = 1;
 	}
 	return (0);
