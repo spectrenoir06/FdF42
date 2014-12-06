@@ -30,11 +30,14 @@ int		mouse_press(int button, int x, int y, t_all *all)
 	if (button == 1)
 	{
 		all->pad++;
+		all->img.mult++;
 		all->redraw = 1;
 	}
 	if (button == 3)
 	{
 		all->pad--;
+		if (all->img.mult)
+			all->img.mult--;
 		all->redraw = 1;
 	}
 	if (button == 5)
