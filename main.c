@@ -39,7 +39,8 @@ int		mouse_press(int button, int x, int y, t_all *all)
 	}
 	if (button == 5)
 	{
-		all->img.mult--;
+		if (all->img.mult)
+			all->img.mult -= 0.5;
 		all->redraw = 1;
 	}
 	return (0);
@@ -49,7 +50,10 @@ int		key_press(int keycode, t_all *all)
 {
 	printf("%d = %c\n", keycode, keycode);
 	if (keycode == 'a')
+	{
+		all->fill = (all->fill? 0: 1);
 		all->redraw = 1;
+	}
 	return (0);
 }
 
@@ -58,8 +62,10 @@ int		loop(t_all *all)
 	if (all->redraw)
 	{
 		ft_bzero(all->img.data, all->img.lx * all->img.ly);
-		draw_map(all);
-		//ft_fill(all->img, ft_new_point2d(10,10),ft_rgb(255,255,255));
+		if (all->fill)
+			draw_map_fill(all);
+		else
+			draw_map(all);
 		mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
 		all->redraw = 0;
 	}
@@ -76,6 +82,7 @@ int		main(int argc, char **argv)
 		SCREEN_SIZE_X, SCREEN_SIZE_Y, "Fdf");
 	all.map.max = 0;
 	all.map.min = 0;
+	all.fill = 0;
 	if (argc > 1)
 	{
 		file_to_lst(argv[1], &all, &lst);

@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include "libft.h"
 
-# define SCREEN_SIZE_X 500
-# define SCREEN_SIZE_Y 500
+# define SCREEN_SIZE_X 2550
+# define SCREEN_SIZE_Y 1440
 
 typedef unsigned char	t_byte;
 typedef unsigned char	t_uint8;
@@ -85,6 +85,8 @@ t_pt2d				ft_new_point2d(int x, int y);
 
 void				ft_draw_pixel3d(t_env env, t_pt3d p, t_color c);
 t_pt3d				ft_new_point3d(int x, int y, int z);
+
+void		ft_draw_pixel3d_img(t_img img, t_pt3d p, t_color c);
 
 t_pt2d				ft_3d_to_2d(t_pt3d p);
 

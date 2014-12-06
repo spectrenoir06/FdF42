@@ -46,7 +46,7 @@ t_pt2d		ft_3d_to_2d(t_pt3d p)
 
 t_pt3d		ft_3d_mul(t_pt3d p, float k)
 {
-	p.x *= k;
-	p.y *= k;
+	p.x = p.x * k;
+	p.y = p.y * k;
 	return (p);
 }
