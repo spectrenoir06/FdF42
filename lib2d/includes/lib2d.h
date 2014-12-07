@@ -31,6 +31,8 @@ typedef struct		s_env
 {
 	void			*mlx;
 	void			*win;
+	int				x;
+	int				y;
 }					t_env;
 
 typedef struct		s_color
@@ -42,6 +44,7 @@ typedef struct		s_color
 
 typedef struct		s_img
 {
+	t_env			*env;
 	char			*data;
 	void			*img;
 	int				bpp;
@@ -88,7 +91,7 @@ t_pt3d				ft_new_point3d(int x, int y, int z);
 
 void				ft_draw_pixel3d_img(t_img img, t_pt3d p, t_color c);
 
-t_pt2d				ft_3d_to_2d(t_pt3d p);
+t_pt2d				ft_3d_to_2d(t_pt3d p, t_env env);
 
 t_rect				ft_new_rect(t_pt2d p1, t_pt2d p2);
 

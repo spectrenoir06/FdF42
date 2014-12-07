@@ -44,7 +44,6 @@ int		mouse_press(int button, int x, int y, t_all *all)
 
 int		key_press(int keycode, t_all *all)
 {
-	printf("%d = %c\n", keycode, keycode);
 	if (keycode == '1')
 	{
 		all->mode = 1;
@@ -60,6 +59,8 @@ int		key_press(int keycode, t_all *all)
 		all->mode = 3;
 		all->redraw = 1;
 	}
+	else if (keycode == 65307)
+		exit(0);
 	return (0);
 }
 
@@ -73,6 +74,10 @@ int		loop(t_all *all)
 		else
 			draw_map(all);
 		mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
+		mlx_string_put(all->env.mlx, all->env.win, 10, 20, 0xFFFFFF,
+		"Bouton 1, 2, 3 = changer de mode");
+		mlx_string_put(all->env.mlx, all->env.win, 10, 40, 0xFFFFFF,
+		"Click souris = zoom");
 		all->redraw = 0;
 	}
 	return (0);

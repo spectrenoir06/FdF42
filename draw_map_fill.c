@@ -21,10 +21,10 @@ t_pt2d		moy2(t_all *all, int x, int y)
 	t_pt2d	p3;
 	t_pt2d	p4;
 
-	p1 = ft_3d_to_2d(warp(all, all->map.tab[x][y]));
-	p2 = ft_3d_to_2d(warp(all, all->map.tab[x + 1][y]));
-	p3 = ft_3d_to_2d(warp(all, all->map.tab[x][y + 1]));
-	p4 = ft_3d_to_2d(warp(all, all->map.tab[x + 1][y + 1]));
+	p1 = ft_3d_to_2d(warp(all, all->map.tab[x][y]), all->env);
+	p2 = ft_3d_to_2d(warp(all, all->map.tab[x + 1][y]), all->env);
+	p3 = ft_3d_to_2d(warp(all, all->map.tab[x][y + 1]), all->env);
+	p4 = ft_3d_to_2d(warp(all, all->map.tab[x + 1][y + 1]), all->env);
 	return (ft_new_point2d((p3.x + p2.x) / 2, (p1.y + p4.y) / 2));
 }
 

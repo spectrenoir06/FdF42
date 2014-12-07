@@ -33,6 +33,8 @@ typedef struct	s_all
 	float		pad;
 	int			mode;
 	int			palette[15];
+	int			x;
+	int			y;
 }				t_all;
 
 #endif
