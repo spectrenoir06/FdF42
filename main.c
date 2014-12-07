@@ -86,6 +86,10 @@ int		loop(t_all *all)
 int		expose(t_all *all)
 {
 	mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
+	mlx_string_put(all->env.mlx, all->env.win, 10, 20, 0xFFFFFF,
+	"Bouton 1, 2, 3 = changer de mode");
+	mlx_string_put(all->env.mlx, all->env.win, 10, 40, 0xFFFFFF,
+	"Click souris = zoom");
 	return (0);
 }
 
