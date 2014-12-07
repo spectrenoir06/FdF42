@@ -124,7 +124,7 @@ void draw_map_fill_2(t_all *all)
 
 					p3 = moy2(all, x, y);
 					ft_fill(all->img, p3,
-						ft_int_to_color(all->palette[c1]));/*
+						ft_int_to_color(0x000001));/*
 					p3 = ft_3d_to_2d(warp(all, all->map.tab[x][y]));
 					p3.y++;
 					ft_fill(all->img, p3,
