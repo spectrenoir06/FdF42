@@ -11,8 +11,9 @@
 # **************************************************************************** #
 
 NAME	= fdf
-SRC		=	 main.c \
-			fdf.c \
+SRC		=	main.c \
+			draw_map.c \
+			draw_map_fill.c \
 			readmap.c
 
 LIBFT	= 	libft/includes

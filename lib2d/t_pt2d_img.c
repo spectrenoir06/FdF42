@@ -16,8 +16,8 @@ int			ft_get_pixel_img(t_img img, t_pt2d p)
 {
 	if ((p.x > 0) && (p.x < (img.lx / 4) && (p.y > 0) && (p.y < img.ly)))
 		return (int)(img.data[p.x * 4 + (p.y * img.lx)]);
-		return (-1);
-	}
+	return (-1);
+}
 
 int			ft_draw_pixel2d_img(t_img img, t_pt2d p, t_color c)
 {

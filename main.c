@@ -12,40 +12,33 @@
 
 #include "lib2d.h"
 #include <stdio.h>
-#include <time.h>
-#include <math.h>
 #include "libft.h"
 #include "main.h"
-#include "fdf.h"
+#include "draw_map.h"
+#include "draw_map_fill.h"
 #include "readmap.h"
 
 int		mouse_press(int button, int x, int y, t_all *all)
 {
-	printf("%d , x = %d , y = %d\n", button, x, y);
+	(void)x;
+	(void)y;
 	if (button == 4)
-	{
 		all->img.mult++;
-		all->redraw = 1;
-	}
-	if (button == 1)
+	else if (button == 1)
 	{
 		all->pad++;
 		all->img.mult++;
-		all->redraw = 1;
 	}
-	if (button == 3)
+	else if (button == 3)
 	{
 		all->pad--;
 		if (all->img.mult)
 			all->img.mult--;
-		all->redraw = 1;
 	}
-	if (button == 5)
-	{
+	else if (button == 5)
 		if (all->img.mult)
 			all->img.mult--;
-		all->redraw = 1;
-	}
+	all->redraw = 1;
 	return (0);
 }
 
@@ -105,7 +98,6 @@ int		main(int argc, char **argv)
 	if (argc > 1)
 	{
 		file_to_lst(argv[1], &all, &lst);
-		list_to_map(&all, lst);
 		all.img.img = mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
 		all.img.data = mlx_get_data_addr(all.img.img, &all.img.bpp,
 			&all.img.lx, &all.img.endian);

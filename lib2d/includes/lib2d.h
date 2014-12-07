@@ -110,5 +110,6 @@ void				ft_draw_line3d(t_env env, t_pt3d p1, t_pt3d p2, t_color c);
 void				ft_draw_line2d_img(t_img i, t_pt2d p, t_pt2d q, t_color c);
 void				ft_draw_line3d_img(t_img i, t_pt3d p, t_pt3d q, t_color c);
 void				ft_fill(t_img img, t_pt2d p, t_color c);
+t_pt3d				warp(void *all, t_pt3d p);
 
 #endif

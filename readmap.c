@@ -13,6 +13,7 @@
 #include "main.h"
 #include "lib2d.h"
 #include "libft.h"
+#include "readmap.h"
 
 void	file_to_lst(char *file, t_all *all, t_list **lst)
 {
@@ -33,14 +34,14 @@ void	file_to_lst(char *file, t_all *all, t_list **lst)
 		all->map.lx = 0;
 		while (*tmp)
 		{
-			point = ft_new_point3d(all->map.lx, all->map.ly, ft_atoi(*tmp));
+			point = ft_new_point3d(all->map.lx++, all->map.ly, ft_atoi(*tmp));
 			ft_lstsmartpushback(lst, ft_lstnew(&point, sizeof(t_pt3d)));
 			free(*tmp++);
-			all->map.lx++;
 		}
 		free(tmp2);
 		all->map.ly++;
 	}
+	list_to_map(all, *lst);
 }
 
 void	list_to_map(t_all *all, t_list *lst)
