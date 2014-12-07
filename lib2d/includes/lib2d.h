@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include "libft.h"
 
-# define SCREEN_SIZE_X 2550
-# define SCREEN_SIZE_Y 1440
+# define SCREEN_SIZE_X 720
+# define SCREEN_SIZE_Y 1280
 
 typedef unsigned char	t_byte;
 typedef unsigned char	t_uint8;

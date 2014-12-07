@@ -44,23 +44,19 @@ int		mouse_press(int button, int x, int y, t_all *all)
 
 int		key_press(int keycode, t_all *all)
 {
-	if (keycode == '1')
-	{
-		all->mode = 1;
-		all->redraw = 1;
-	}
-	else if (keycode == '2')
-	{
-		all->mode = 2;
-		all->redraw = 1;
-	}
-	else if (keycode == '3')
-	{
-		all->mode = 3;
-		all->redraw = 1;
-	}
+	if (keycode >= '1' && keycode < '4')
+		all->mode = keycode - '0';
 	else if (keycode == 65307)
 		exit(0);
+	else if (keycode == 65362)
+		all->env.y -= 30;
+	else if (keycode == 65364)
+		all->env.y += 30;
+	else if (keycode == 65361)
+		all->env.x += 30;
+	else if (keycode == 65363)
+		all->env.x -= 30;
+	all->redraw = 1;
 	return (0);
 }
 
@@ -78,6 +74,8 @@ int		loop(t_all *all)
 		"Bouton 1, 2, 3 = changer de mode");
 		mlx_string_put(all->env.mlx, all->env.win, 10, 40, 0xFFFFFF,
 		"Click souris = zoom");
+		mlx_string_put(all->env.mlx, all->env.win, 10, 60, 0xFFFFFF,
+		"Fleche = deplacement");
 		all->redraw = 0;
 	}
 	return (0);
@@ -90,6 +88,8 @@ int		expose(t_all *all)
 	"Bouton 1, 2, 3 = changer de mode");
 	mlx_string_put(all->env.mlx, all->env.win, 10, 40, 0xFFFFFF,
 	"Click souris = zoom");
+	mlx_string_put(all->env.mlx, all->env.win, 10, 60, 0xFFFFFF,
+	"Fleche = deplacement");
 	return (0);
 }
 
