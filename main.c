@@ -52,9 +52,19 @@ int		mouse_press(int button, int x, int y, t_all *all)
 int		key_press(int keycode, t_all *all)
 {
 	printf("%d = %c\n", keycode, keycode);
-	if (keycode == 'a')
+	if (keycode == '1')
 	{
-		all->fill = (all->fill? 0: 1);
+		all->mode = 1;
+		all->redraw = 1;
+	}
+	else if (keycode == '2')
+	{
+		all->mode = 2;
+		all->redraw = 1;
+	}
+	else if (keycode == '3')
+	{
+		all->mode = 3;
 		all->redraw = 1;
 	}
 	return (0);
@@ -65,7 +75,7 @@ int		loop(t_all *all)
 	if (all->redraw)
 	{
 		ft_bzero(all->img.data, all->img.lx * all->img.ly);
-		if (all->fill)
+		if (all->mode > 1)
 			draw_map_fill(all);
 		else
 			draw_map(all);
@@ -91,7 +101,7 @@ int		main(int argc, char **argv)
 		SCREEN_SIZE_X, SCREEN_SIZE_Y, "Fdf");
 	all.map.max = 0;
 	all.map.min = 0;
-	all.fill = 0;
+	all.mode = 1;
 	if (argc > 1)
 	{
 		file_to_lst(argv[1], &all, &lst);

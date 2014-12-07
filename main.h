@@ -31,7 +31,7 @@ typedef struct	s_all
 	t_img		img;
 	int			redraw;
 	float		pad;
-	int			fill;
+	int			mode;
 	int			palette[15];
 }				t_all;
 

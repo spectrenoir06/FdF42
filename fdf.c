@@ -111,7 +111,8 @@ void draw_map_fill_2(t_all *all)
 			x = (all->map.lx - 2);
 			while (x >= 0)
 				{
-					c1 = remap(moy(all->map.tab[x][y], all->map.tab[x +1 ][y+1]),
+					c1 = remap(moy(all->map.tab[x][y],
+						all->map.tab[x + 1][y + 1]),
 						all->map.min, all->map.max);
 					ft_draw_line3d_img(all->img,
 						ft_3d_mul(all->map.tab[x][y], all->pad),
@@ -123,12 +124,12 @@ void draw_map_fill_2(t_all *all)
 						ft_int_to_color(all->palette[c1]));
 
 					p3 = moy2(all, x, y);
-					ft_fill(all->img, p3,
-						ft_int_to_color(0x000001));/*
-					p3 = ft_3d_to_2d(warp(all, all->map.tab[x][y]));
-					p3.y++;
-					ft_fill(all->img, p3,
-						ft_int_to_color(all->palette[c1]))*/
+					if (all->mode == 2)
+						ft_fill(all->img, p3,
+							ft_int_to_color(all->palette[c1]));
+					else
+						ft_fill(all->img, p3,
+							ft_int_to_color(0x000001));
 					x--;
 				}
 				y--;
