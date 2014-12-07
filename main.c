@@ -75,6 +75,12 @@ int		loop(t_all *all)
 	return (0);
 }
 
+int		expose(t_all *all)
+{
+	mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
+	return (0);
+}
+
 int		main(int argc, char **argv)
 {
 	t_all	all;
@@ -97,6 +103,7 @@ int		main(int argc, char **argv)
 		mlx_key_hook(all.env.win, key_press, &all);
 		mlx_mouse_hook(all.env.win, mouse_press, &all);
 		mlx_loop_hook(all.env.mlx, loop, &all);
+		mlx_expose_hook (all.env.win, expose, &all);
 		mlx_loop(all.env.mlx);
 	}
 	else
