@@ -46,7 +46,7 @@ int		key_press(int keycode, t_all *all)
 	if (keycode >= '1' && keycode < '4')
 		all->mode = keycode - '0';
 	else if (keycode == 65307)
-		exit(0);
+		quit(all);
 	else if (keycode == 65364)
 		all->env.y -= 30;
 	else if (keycode == 65362)

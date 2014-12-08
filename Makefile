@@ -14,7 +14,8 @@ NAME	= fdf
 SRC		=	main.c \
 			draw_map.c \
 			draw_map_fill.c \
-			readmap.c
+			readmap.c \
+			quit.c
 
 LIBFT	= 	libft/includes
 LIB2D	=	lib2d/includes

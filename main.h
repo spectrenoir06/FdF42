@@ -37,4 +37,6 @@ typedef struct	s_all
 	int			y;
 }				t_all;
 
+void	quit(t_all *all);
+
 #endif
