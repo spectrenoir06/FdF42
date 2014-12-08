@@ -48,9 +48,9 @@ int		key_press(int keycode, t_all *all)
 		all->mode = keycode - '0';
 	else if (keycode == 65307)
 		exit(0);
-	else if (keycode == 65362)
-		all->env.y -= 30;
 	else if (keycode == 65364)
+		all->env.y -= 30;
+	else if (keycode == 65362)
 		all->env.y += 30;
 	else if (keycode == 65361)
 		all->env.x += 30;
@@ -101,7 +101,7 @@ int		main(int argc, char **argv)
 	all.env.mlx = mlx_init();
 	all.env.win = mlx_new_window(all.env.mlx,
 		SCREEN_SIZE_X, SCREEN_SIZE_Y, "Fdf");
-	all.map.max = 0;
+	all.map.max = 1;
 	all.map.min = 0;
 	all.mode = 1;
 	if (argc > 1)
