@@ -12,7 +12,6 @@
 
 #include "lib2d.h"
 #include "../../main.h"
-
 void		ft_draw_pixel3d(t_env env, t_pt3d p, t_color c)
 {
 	t_pt2d		t;

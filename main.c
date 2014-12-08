@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "lib2d.h"
-#include <stdio.h>
 #include "libft.h"
 #include "main.h"
 #include "draw_map.h"

@@ -33,6 +33,7 @@ typedef struct		s_env
 	void			*win;
 	int				x;
 	int				y;
+	float			r;
 }					t_env;
 
 typedef struct		s_color

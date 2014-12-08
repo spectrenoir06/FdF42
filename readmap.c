@@ -62,7 +62,6 @@ void	list_to_map(t_all *all, t_list *lst)
 	t_list	*lsttmp;
 
 	i = 0;
-	lsttmp = lst;
 	all->map.tab = (t_pt3d **)malloc(sizeof(t_pt3d *) * all->map.lx);
 	while (i < all->map.lx)
 		all->map.tab[i++] = malloc(sizeof(t_pt3d) * all->map.ly);
@@ -74,9 +73,10 @@ void	list_to_map(t_all *all, t_list *lst)
 		if (all->map.max < point.z)
 			all->map.max = point.z;
 		all->map.tab[point.x][point.y] = point;
+		lsttmp = lst;
 		lst = lst->next;
+		ft_lstsimpledelone(&lsttmp);
 	}
-	ft_lstsimpledel(&lsttmp);
 	init(all);
 }
 
@@ -89,9 +89,9 @@ void	fill_pallette(int tab[15])
 	tab[4] = 0xB4B44B;
 	tab[5] = 0xB7A749;
 	tab[6] = 0xBA9A47;
-	tab[7] = 0xBD8D46;
-	tab[8] = 0xBD8D46;
-	tab[9] = 0xBD8D46;
+	tab[7] = 0xC29654;
+	tab[8] = 0xC59A5C;
+	tab[9] = 0xC89F63;
 	tab[10] = 0xCBA46B;
 	tab[11] = 0xD8BB90;
 	tab[12] = 0xE5D2B5;
