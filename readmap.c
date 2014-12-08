@@ -82,9 +82,9 @@ void	list_to_map(t_all *all, t_list *lst)
 
 void	fill_pallette(int tab[15])
 {
-	tab[0] = 0x01B0F0;
-	tab[1] = 0x01B0F0;
-	tab[2] = 0x01B0F0;
+	tab[0] = 0x31698A;
+	tab[1] = 0x2181AC;
+	tab[2] = 0x1199CE;
 	tab[3] = 0x01B0F0;
 	tab[4] = 0xB4B44B;
 	tab[5] = 0xB7A749;
