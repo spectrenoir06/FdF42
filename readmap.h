@@ -15,8 +15,8 @@
 # include "main.h"
 
 void	fill_pallette(int tab[15]);
-void    getmap(char *file, t_all *all);
-void    init(t_all *all);
+void	getmap(char *file, t_all *all);
+void	init(t_all *all);
 void	fill_palette(int tab[30]);
 
 #endif
