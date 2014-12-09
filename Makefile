@@ -15,6 +15,7 @@ SRC		=	main.c \
 			draw_map.c \
 			draw_map_fill.c \
 			readmap.c \
+			palette.c \
 			quit.c
 
 LIBFT	= 	libft/includes
@@ -27,10 +28,10 @@ FLAGS	= -Wall -Werror -Wextra -L/usr/X11/lib -lmlx -lXext -lX11
 all: $(NAME)
 
 $(NAME): $(OBJ) libft/libft.a lib2d/lib2d.a
-	@$(CC) -O3 -I $(LIBFT) -I $(LIB2D) libft/libft.a lib2d/lib2d.a -o $(NAME) $(OBJ) $(FLAGS)
+	@$(CC) -I $(LIBFT) -I $(LIB2D) libft/libft.a lib2d/lib2d.a -o $(NAME) $(OBJ) $(FLAGS)
 
 %.o: %.c
-	@$(CC) -O3 -I $(LIBFT) -I $(LIB2D) -o $@ -c $? $(FLAGS)
+	@$(CC) -I $(LIBFT) -I $(LIB2D) -o $@ -c $? $(FLAGS)
 
 lib2d/lib2d.a:
 	make -C lib2d

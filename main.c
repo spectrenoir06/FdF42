@@ -55,11 +55,11 @@ int		key_press(int keycode, t_all *all)
 		all->env.x += 30;
 	else if (keycode == 65363)
 		all->env.x -= 30;
-	else if (keycode == 'r' && all->env.cst < 3)
+	else if (keycode == 'r')
 		init(all);
 	else if (keycode == 'a')
 		all->env.cst += 0.2;
-	else if (keycode == 'q' && all->env.cst > 0.8)
+	else if (keycode == 'q' && all->env.cst > 1.0)
 		all->env.cst -= 0.2;
 	all->redraw = 1;
 	return (0);
@@ -75,8 +75,9 @@ int		loop(t_all *all)
 		else
 			draw_map(all);
 		mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
-		mlx_string_put(all->env.mlx, all->env.win, all->, 20, 0xFFFFFF,
-		"Button 1, 2, 3 = Change mode");
+		mlx_string_put(all->env.mlx, all->env.win,
+			SCREEN_SIZE_X / 2 - (ft_strlen(all->name) * 5 / 2), 20, 0xFFFFFF,
+			all->name);
 		mlx_string_put(all->env.mlx, all->env.win, 10, 20, 0xFFFFFF,
 		"Button 1, 2, 3 = Change mode");
 		mlx_string_put(all->env.mlx, all->env.win, 10, 40, 0xFFFFFF,
@@ -124,7 +125,7 @@ int		main(int argc, char **argv)
 		all.img.img = mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
 		all.img.data = mlx_get_data_addr(all.img.img, &all.img.bpp,
 			&all.img.lx, &all.img.endian);
-		fill_pallette(all.palette);
+		fill_palette(all.palette);
 		mlx_key_hook(all.env.win, key_press, &all);
 		mlx_mouse_hook(all.env.win, mouse_press, &all);
 		mlx_loop_hook(all.env.mlx, loop, &all);

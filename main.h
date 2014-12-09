@@ -32,7 +32,7 @@ typedef struct	s_all
 	int			redraw;
 	float		pad;
 	int			mode;
-	int			palette[15];
+	int			palette[30];
 	int			x;
 	int			y;
 	char		*name;

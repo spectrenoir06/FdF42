@@ -15,7 +15,7 @@
 #include "libft.h"
 #include "readmap.h"
 
-void	init(t_all *all)
+void		init(t_all *all)
 {
 	all->img.ly = SCREEN_SIZE_Y;
 	all->redraw = 1;
@@ -27,7 +27,7 @@ void	init(t_all *all)
 	all->env.cst = 2.0;
 }
 
-int		file_to_lst(int fd, t_all *all, t_list **lst)
+int			file_to_lst(int fd, t_all *all, t_list **lst)
 {
 	char	**tmp;
 	char	**tmp2;
@@ -80,7 +80,7 @@ void		list_to_map(t_all *all, t_list *lst)
 	}
 }
 
-void getmap(char *file, t_all *all)
+void		getmap(char *file, t_all *all)
 {
 	t_list	*lst;
 	int		fd;
@@ -99,23 +99,4 @@ void getmap(char *file, t_all *all)
 	}
 	list_to_map(all, lst);
 	init(all);
-}
-
-void	fill_pallette(int tab[15])
-{
-	tab[0] = 0x31698A;
-	tab[1] = 0x2181AC;
-	tab[2] = 0x1199CE;
-	tab[3] = 0x01B0F0;
-	tab[4] = 0xB4B44B;
-	tab[5] = 0xB7A749;
-	tab[6] = 0xBA9A47;
-	tab[7] = 0xC29654;
-	tab[8] = 0xC59A5C;
-	tab[9] = 0xC89F63;
-	tab[10] = 0xCBA46B;
-	tab[11] = 0xD8BB90;
-	tab[12] = 0xE5D2B5;
-	tab[13] = 0xFFFFFF;
-	tab[14] = 0xFFFFFF;
 }
