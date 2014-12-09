@@ -12,11 +12,10 @@
 
 #ifndef READMAP_H
 # define READMAP_H
-
 # include "main.h"
 
-void	file_to_lst(char *file, t_all *all, t_list **lst);
-void	list_to_map(t_all *all, t_list *lst);
 void	fill_pallette(int tab[15]);
+void    getmap(char *file, t_all *all);
+void    init(t_all *all);
 
 #endif

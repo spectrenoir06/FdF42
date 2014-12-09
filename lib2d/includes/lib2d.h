@@ -34,6 +34,7 @@ typedef struct		s_env
 	int				x;
 	int				y;
 	float			r;
+	float			cst;
 }					t_env;
 
 typedef struct		s_color

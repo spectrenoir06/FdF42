@@ -35,6 +35,7 @@ typedef struct	s_all
 	int			palette[15];
 	int			x;
 	int			y;
+	char		*name;
 }				t_all;
 
 void			quit(t_all *all);

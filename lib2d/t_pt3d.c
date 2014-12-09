@@ -41,7 +41,7 @@ t_pt2d		ft_3d_to_2d(t_pt3d p, t_env env)
 	t_pt2d		t;
 
 	t.x = p.x - p.y + (SCREEN_SIZE_X / 2) + env.x;
-	t.y = (-p.z) + (p.x / 2.0) + (p.y / 2.0) + env.y;
+	t.y = (-p.z) + (p.x / env.cst) + (p.y / env.cst) + env.y;
 	return (t);
 }
 

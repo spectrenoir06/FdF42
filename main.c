@@ -55,6 +55,12 @@ int		key_press(int keycode, t_all *all)
 		all->env.x += 30;
 	else if (keycode == 65363)
 		all->env.x -= 30;
+	else if (keycode == 'r' && all->env.cst < 3)
+		init(all);
+	else if (keycode == 'a')
+		all->env.cst += 0.2;
+	else if (keycode == 'q' && all->env.cst > 0.8)
+		all->env.cst -= 0.2;
 	all->redraw = 1;
 	return (0);
 }
@@ -69,12 +75,18 @@ int		loop(t_all *all)
 		else
 			draw_map(all);
 		mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
+		mlx_string_put(all->env.mlx, all->env.win, all->, 20, 0xFFFFFF,
+		"Button 1, 2, 3 = Change mode");
 		mlx_string_put(all->env.mlx, all->env.win, 10, 20, 0xFFFFFF,
-		"Bouton 1, 2, 3 = changer de mode");
+		"Button 1, 2, 3 = Change mode");
 		mlx_string_put(all->env.mlx, all->env.win, 10, 40, 0xFFFFFF,
-		"Click souris = zoom");
+		"Mouse click = Zoom");
 		mlx_string_put(all->env.mlx, all->env.win, 10, 60, 0xFFFFFF,
-		"Fleche = deplacement");
+		"Arrows keys = Move");
+		mlx_string_put(all->env.mlx, all->env.win, 10, 80, 0xFFFFFF,
+		"r = reset");
+		mlx_string_put(all->env.mlx, all->env.win, 10, 100, 0xFFFFFF,
+		"a/q = rotation");
 		all->redraw = 0;
 	}
 	return (0);
@@ -84,18 +96,21 @@ int		expose(t_all *all)
 {
 	mlx_put_image_to_window(all->env.mlx, all->env.win, all->img.img, 0, 0);
 	mlx_string_put(all->env.mlx, all->env.win, 10, 20, 0xFFFFFF,
-	"Bouton 1, 2, 3 = changer de mode");
+	"Button 1, 2, 3 = Change mode");
 	mlx_string_put(all->env.mlx, all->env.win, 10, 40, 0xFFFFFF,
-	"Click souris = zoom");
+	"Mouse click = Zoom");
 	mlx_string_put(all->env.mlx, all->env.win, 10, 60, 0xFFFFFF,
-	"Fleche = deplacement");
+	"Arrows keys = Move");
+	mlx_string_put(all->env.mlx, all->env.win, 10, 80, 0xFFFFFF,
+	"r = reset");
+	mlx_string_put(all->env.mlx, all->env.win, 10, 100, 0xFFFFFF,
+	"a/q = rotation");
 	return (0);
 }
 
 int		main(int argc, char **argv)
 {
 	t_all	all;
-	t_list	*lst;
 
 	all.env.mlx = mlx_init();
 	all.env.win = mlx_new_window(all.env.mlx,
@@ -103,9 +118,9 @@ int		main(int argc, char **argv)
 	all.map.max = 1;
 	all.map.min = 0;
 	all.mode = 1;
-	if (argc > 1)
+	if (argc == 2)
 	{
-		file_to_lst(argv[1], &all, &lst);
+		getmap(argv[1], &all);
 		all.img.img = mlx_new_image(all.env.mlx, SCREEN_SIZE_X, SCREEN_SIZE_Y);
 		all.img.data = mlx_get_data_addr(all.img.img, &all.img.bpp,
 			&all.img.lx, &all.img.endian);
@@ -117,6 +132,6 @@ int		main(int argc, char **argv)
 		mlx_loop(all.env.mlx);
 	}
 	else
-		ft_putstr("pas de fichier\n");
+		ft_putstr_fd("usage: ./fdf <map.fdf>\n", 2);
 	return (0);
 }

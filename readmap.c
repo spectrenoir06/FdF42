@@ -24,21 +24,22 @@ void	init(t_all *all)
 	all->env.x = 0;
 	all->env.y = 0;
 	all->img.env = &all->env;
+	all->env.cst = 2.0;
 }
 
-void	file_to_lst(char *file, t_all *all, t_list **lst)
+int		file_to_lst(int fd, t_all *all, t_list **lst)
 {
 	char	**tmp;
 	char	**tmp2;
 	char	*line;
 	t_pt3d	point;
-	int		fd;
+	int		ret;
 
-	*lst = NULL;
 	all->map.ly = 0;
-	fd = open(file, 'r');
-	while (get_next_line(fd, &line))
+	while ((ret = get_next_line(fd, &line)))
 	{
+		if (ret == -1)
+			return (0);
 		tmp = ft_strsplit(line, ' ');
 		tmp2 = tmp;
 		free(line);
@@ -52,10 +53,10 @@ void	file_to_lst(char *file, t_all *all, t_list **lst)
 		free(tmp2);
 		all->map.ly++;
 	}
-	list_to_map(all, *lst);
+	return (1);
 }
 
-void	list_to_map(t_all *all, t_list *lst)
+void		list_to_map(t_all *all, t_list *lst)
 {
 	int		i;
 	t_pt3d	point;
@@ -77,6 +78,26 @@ void	list_to_map(t_all *all, t_list *lst)
 		lst = lst->next;
 		ft_lstsimpledelone(&lsttmp);
 	}
+}
+
+void getmap(char *file, t_all *all)
+{
+	t_list	*lst;
+	int		fd;
+
+	all->name = file;
+	lst = NULL;
+	if ((fd = open(file, 'r')) == -1)
+	{
+		ft_putstr_fd("fdf: Map does not exist or is invalid\n", 2);
+		exit(0);
+	}
+	if (!file_to_lst(fd, all, &lst))
+	{
+		ft_putstr_fd("fdf: Map is a directory\n", 2);
+		exit(0);
+	}
+	list_to_map(all, lst);
 	init(all);
 }
 
