@@ -29,22 +29,22 @@ FLAGS	= -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 %.o: %.c
-	@$(CC) -O3 -I $(HEADDIR) -o $@ -I $(HEADDIR) -I $(HEADDIR2) -c $? $(FLAGS)
+	$(CC) -O3 -I $(HEADDIR) -o $@ -I $(HEADDIR) -I $(HEADDIR2) -c $? $(FLAGS)
 
-dyn: 
-	@gcc -fPIC -Wall -Werror -Wextra -c $(SRC)
-	@gcc -fPIC -Werror -Wall -Wextra -shared -o libft.so $(OBJ)
+dyn:
+	gcc -fPIC -Wall -Werror -Wextra -c $(SRC)
+	gcc -fPIC -Werror -Wall -Wextra -shared -o libft.so $(OBJ)
 
 .PHONY: clean fclean re
 
 clean:
-	@rm -f $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all

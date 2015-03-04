@@ -6,7 +6,7 @@
 #    By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 10:11:24 by adoussau          #+#    #+#              #
-#    Updated: 2014/11/28 15:13:43 by adoussau         ###   ########.fr        #
+#*   Updated: 2014/12/10 01:02:28 by adoussau         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ HEADDIR	= includes/
 
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
-FLAGS	= -Wall -Werror -Wextra
+FLAGS	= 
 
 ifeq ($(SYSTEM),Linux)
 	FBSD_addons=strlcat.c strnstr.c
