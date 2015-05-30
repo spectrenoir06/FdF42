@@ -6,7 +6,7 @@
 #    By: adoussau <antoine@doussaud.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 10:11:24 by adoussau          #+#    #+#              #
-#*   Updated: 2014/12/10 01:03:45 by adoussau         ###   ########.fr       *#
+#*   Updated: 2015/05/30 16:44:07 by adoussau         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 
-MLX			= libmlx.a
+MLX			= mlx/libmlx_Linux.a
 MLX_LINK	= -lmlx -lXext -lX11
 FLAGS		= -Wall -Wextra
 SRC	+=
@@ -53,7 +53,7 @@ $(NAME): $(OBJ) $(LIB2D) $(LIBFT)
 	$(CC) $(OBJ) $(LIBFT) $(LIB2D) $(MLX) -o $(NAME) $(MLX_LINK) $(FLAGS)
 
 %.o: %.c
-	$(CC) -I $(HEAD_LIBFT) -I $(HEAD_LIB2D) $(MLX) -o $@ -c $? $(FLAGS)
+	$(CC) -I $(HEAD_LIBFT) -I $(HEAD_LIB2D) -o $@ -c $? $(FLAGS)
 
 $(LIB2D):
 	make -C lib2d

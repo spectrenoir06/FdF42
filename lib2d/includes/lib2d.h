@@ -117,4 +117,7 @@ void				ft_draw_line3d_img(t_img i, t_pt3d p, t_pt3d q, t_color c);
 void				ft_fill(t_img img, t_pt2d p, t_color c);
 t_pt3d				warp(void *all, t_pt3d p);
 
+void				ft_draw_horz_img(t_img img, t_pt2d p1, t_pt2d p2, t_color c);
+void				drawTriangle(t_img i, t_pt2d v1, t_pt2d v2, t_pt2d v3);
+
 #endif

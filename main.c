@@ -70,6 +70,12 @@ int		loop(t_all *all)
 	if (all->redraw)
 	{
 		ft_bzero(all->img.data, all->img.lx * all->img.ly);
+
+		t_pt2d p1 = {250,0};
+		t_pt2d p2 = {100,250};
+		t_pt2d p3 = {400,400};
+		drawTriangle(all->img, p1, p2, p3);
+		//fillBottomFlatTriangle(all->img, p1, p2, p3);
 		if (all->mode > 1)
 			draw_map_fill(all);
 		else

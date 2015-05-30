@@ -11,12 +11,13 @@
 # **************************************************************************** #
 
 NAME	= lib2d.a
-SRC		=	t_pt2d.c \
-			t_pt2d_img.c \
-			t_pt3d.c \
-			t_pt3d_img.c \
-			line.c \
-			line_img.c \
+SRC		=	t_pt2d.c		\
+			t_pt2d_img.c	\
+			t_pt3d.c		\
+			t_pt3d_img.c	\
+			line.c			\
+			line_img.c		\
+			triangle.c		\
 			color.c
 
 HEADDIR		= includes/
@@ -24,7 +25,7 @@ HEADDIR2	= ../libft/includes/
 
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
-FLAGS	= -Wall -Werror -Wextra
+FLAGS	= -Wall -Wextra
 
 all: $(NAME)
 
