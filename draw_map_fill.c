@@ -30,11 +30,10 @@ t_pt2d		moy2(t_all *all, int x, int y)
 
 void		draw_map_fill_2(t_all *all)
 {
-	int		x;
-	int		y;
+	int		x = (all->map.lx - 2);
+	int		y = (all->map.ly - 2);
 	t_byte	c1;
 
-	y = (all->map.ly - 2);
 	while (y >= 0)
 	{
 		x = (all->map.lx - 2);
@@ -42,16 +41,21 @@ void		draw_map_fill_2(t_all *all)
 		{
 			c1 = remap(moy(all->map.tab[x][y], all->map.tab[x + 1][y + 1]),
 				all->map.min, all->map.max);
-			ft_draw_line3d_img(all->img,
+
+			drawTriangle3D(
+				all->img,
 				ft_3d_mul(all->map.tab[x][y], all->pad),
 				ft_3d_mul(all->map.tab[x + 1][y], all->pad),
+				ft_3d_mul(all->map.tab[x + 1][y + 1], all->pad),
 				ft_int_to_color(all->palette[c1]));
-			ft_draw_line3d_img(all->img,
-				ft_3d_mul(all->map.tab[x][y], all->pad),
+			drawTriangle3D(
+				all->img,
 				ft_3d_mul(all->map.tab[x][y + 1], all->pad),
+				ft_3d_mul(all->map.tab[x][y], all->pad),
+				ft_3d_mul(all->map.tab[x + 1][y + 1], all->pad),
 				ft_int_to_color(all->palette[c1]));
-			ft_fill(all->img, moy2(all, x--, y),
-				ft_int_to_color((all->mode == 2 ? all->palette[c1] : 1)));
+
+			x--;
 		}
 		y--;
 	}
@@ -99,7 +103,7 @@ void		draw_map_end_h(t_all *all)
 
 void		draw_map_fill(t_all *all)
 {
-	draw_map_end_v(all);
-	draw_map_end_h(all);
+	//2draw_map_end_v(all);
+	//draw_map_end_h(all);
 	draw_map_fill_2(all);
 }

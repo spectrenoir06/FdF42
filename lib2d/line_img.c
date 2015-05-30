@@ -73,10 +73,25 @@ void			ft_draw_line2d_img(t_img img, t_pt2d p1, t_pt2d p2, t_color c)
 
 void		ft_draw_horz_img(t_img img, t_pt2d p1, t_pt2d p2, t_color c)
 {
-	while (p1.x <= p2.x)
+
+	if (p1.x < p2.x)
 	{
-		c.b = p1.x - p2.x;
-		ft_draw_pixel2d_img(img, p1, c);
-		p1.x++;
+		t_pt2d p = {p1.x, p1.y};
+		while (p.x <= p2.x)
+		{
+			//c.r = p.x - p2.x;
+			ft_draw_pixel2d_img(img, p, c);
+			p.x++;
+		}
+	}
+	else
+	{
+		t_pt2d p = {p2.x, p2.y};
+		while (p.x <= p1.x)
+		{
+			//c.r = p.x - p2.x;
+			ft_draw_pixel2d_img(img, p, c);
+			p.x++;
+		}
 	}
 }

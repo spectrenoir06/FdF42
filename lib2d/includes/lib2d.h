@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include "libft.h"
 
-# define SCREEN_SIZE_X 2560
-# define SCREEN_SIZE_Y 1440
+# define SCREEN_SIZE_X 1920
+# define SCREEN_SIZE_Y 1080
 
 typedef unsigned char	t_byte;
 typedef unsigned char	t_uint8;
@@ -61,6 +61,14 @@ typedef struct		s_pt2d
 	int				x;
 	int				y;
 }					t_pt2d;
+
+typedef struct		s_pt2dc
+{
+	int				x;
+	int				y;
+	t_color			c;
+}					t_pt2dc;
+
 
 typedef struct		s_pt3d
 {
@@ -116,8 +124,10 @@ void				ft_draw_line2d_img(t_img i, t_pt2d p, t_pt2d q, t_color c);
 void				ft_draw_line3d_img(t_img i, t_pt3d p, t_pt3d q, t_color c);
 void				ft_fill(t_img img, t_pt2d p, t_color c);
 t_pt3d				warp(void *all, t_pt3d p);
+void				ft_draw_horz_img(t_img img, t_pt2d p1, t_pt2d p2, t_color);
 
-void				ft_draw_horz_img(t_img img, t_pt2d p1, t_pt2d p2, t_color c);
-void				drawTriangle(t_img i, t_pt2d v1, t_pt2d v2, t_pt2d v3);
+
+void				drawTriangle(t_img i, t_pt2d v1, t_pt2d v2, t_pt2d v3, t_color);
+void				drawTriangle3D(t_img i, t_pt3d v1, t_pt3d v2, t_pt3d v3, t_color c);
 
 #endif

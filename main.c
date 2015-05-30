@@ -43,8 +43,11 @@ int		mouse_press(int button, int x, int y, t_all *all)
 
 int		key_press(int keycode, t_all *all)
 {
+	printf("Key = %d, %c\n", keycode, keycode);
 	if (keycode >= '1' && keycode < '4')
 		all->mode = keycode - '0';
+	else if (keycode == '&')
+		all->mode = 3;
 	else if (keycode == 65307)
 		quit(all);
 	else if (keycode == 65364)
@@ -71,10 +74,11 @@ int		loop(t_all *all)
 	{
 		ft_bzero(all->img.data, all->img.lx * all->img.ly);
 
-		t_pt2d p1 = {250,0};
-		t_pt2d p2 = {100,250};
-		t_pt2d p3 = {400,400};
-		drawTriangle(all->img, p1, p2, p3);
+		t_pt2d p3 = {500, 0};
+		t_pt2d p2 = {1000, 500};
+		t_pt2d p1 = {500, 600};
+		t_color c = {0,100,255};
+		//drawTriangle(all->img, p1, p2, p3, c);
 		//fillBottomFlatTriangle(all->img, p1, p2, p3);
 		if (all->mode > 1)
 			draw_map_fill(all);
