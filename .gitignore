@@ -1,4 +1,5 @@
 *.o
-*.a
+libft.a
+lib2d.a
 a.out
 fdf
