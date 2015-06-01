@@ -20,8 +20,7 @@ SRC		=	t_pt2d.c		\
 			triangle.c		\
 			color.c
 
-HEADDIR		= includes/
-HEADDIR2	= ../libft/includes/
+HEADDIR		= -I includes/ -I ../libft/includes/ -I ../mlx/
 
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
@@ -34,7 +33,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) -O3 -I $(HEADDIR) -o $@ -I $(HEADDIR) -I $(HEADDIR2) -c $? $(FLAGS)
+	$(CC) -O3 $(HEADDIR) -o $@ -c $? $(FLAGS)
 
 dyn:
 	gcc -fPIC -Wall -Werror -Wextra -c $(SRC)

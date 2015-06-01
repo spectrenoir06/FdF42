@@ -39,8 +39,8 @@ endif
 
 ifeq ($(UNAME_S),Darwin)
 
-MLX			= -L/usr/X11/lib
-MLX_LINK	= -lmlx -lXext -lX11
+MLX			=  mlx/libmlx_intel-mac.a
+MLX_LINK	= -I /opt/X11/include/ -L/usr/X11/lib -lX11 -lXext
 
 FLAGS		= -Wall -Wextra -Werror
 SRC	+=
