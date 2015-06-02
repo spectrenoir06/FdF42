@@ -25,7 +25,7 @@ HEAD_LIB2D = lib2d/includes
 
 
 OBJ		= $(SRC:.c=.o)
-CC		= gcc
+CC		= gcc -O3
 
 UNAME_S := $(shell uname -s)
 

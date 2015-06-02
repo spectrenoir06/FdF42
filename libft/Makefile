@@ -35,8 +35,8 @@ SRC		= ft_bzero.c ft_memset.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 HEADDIR	= includes/
 
 OBJ		= $(SRC:.c=.o)
-CC		= gcc
-FLAGS	= 
+CC		= gcc -O3
+FLAGS	=
 
 ifeq ($(SYSTEM),Linux)
 	FBSD_addons=strlcat.c strnstr.c
@@ -51,7 +51,7 @@ $(NAME): $(OBJ)
 %.o: %.c
 	@$(CC) -O3 -I $(HEADDIR) -o $@ -c $? $(FLAGS)
 
-dyn: 
+dyn:
 	@gcc -fPIC -Wall -Werror -Wextra -c $(SRC)
 	@gcc -fPIC -Werror -Wall -Wextra -shared -o libft.so $(OBJ)
 

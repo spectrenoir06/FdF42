@@ -23,7 +23,7 @@ SRC		=	t_pt2d.c		\
 HEADDIR		= -I includes/ -I ../libft/includes/ -I ../mlx/
 
 OBJ		= $(SRC:.c=.o)
-CC		= gcc
+CC		= gcc -O3
 FLAGS	= -Wall -Wextra
 
 all: $(NAME)
