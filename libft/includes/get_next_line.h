@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include <unistd.h>
-# include <fcntl.h>
+//# include <fcntl.h>
 
 # define BUFF_SIZE 65
 

@@ -31,8 +31,8 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 
-MLX			= mlx/libmlx_Linux.a
-MLX_LINK	= -lmlx -lXext -lX11
+MLX			= mlx/libmlx_Linux.a -I mlx/ -lX11  -lXext
+MLX_LINK	=
 FLAGS		= -Wall -Wextra
 SRC	+=
 endif
@@ -53,7 +53,7 @@ $(NAME): $(OBJ) $(LIB2D) $(LIBFT)
 	$(CC) $(OBJ) $(LIBFT) $(LIB2D) $(MLX) -o $(NAME) $(MLX_LINK) $(FLAGS)
 
 %.o: %.c
-	$(CC) -I $(HEAD_LIBFT) -I $(HEAD_LIB2D) -o $@ -c $? $(FLAGS)
+	$(CC) -I $(HEAD_LIBFT) -I $(HEAD_LIB2D) -I mlx/ -o $@ -c $? $(FLAGS)
 
 $(LIB2D):
 	make -C lib2d
