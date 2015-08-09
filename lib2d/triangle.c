@@ -104,6 +104,12 @@ void	drawTriangle(t_img i, t_pt2d v1, t_pt2d v2, t_pt2d v3, t_color c)
 	}
 }
 
+int		isOnScreen(t_img img, t_pt2d p)
+{
+	return ((p.x > 0) && p.x < (img.lx / 4) && p.y > 0 && p.y < img.ly);
+
+}
+
 void	drawTriangle3D(t_img i, t_pt3d v1, t_pt3d v2, t_pt3d v3, t_color c)
 {
 	v1.z *= i.mult;
@@ -114,6 +120,6 @@ void	drawTriangle3D(t_img i, t_pt3d v1, t_pt3d v2, t_pt3d v3, t_color c)
 	t_pt2d p2 = ft_3d_to_2d(v2, *i.env);
 	t_pt2d p3 = ft_3d_to_2d(v3, *i.env);
 
-
-	drawTriangle(i,p1,p2,p3,c);
+	if (isOnScreen(i, p1) || isOnScreen(i, p2) || isOnScreen(i, p3))
+		drawTriangle(i,p1,p2,p3,c);
 }

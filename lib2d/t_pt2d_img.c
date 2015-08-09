@@ -27,8 +27,8 @@ int			ft_draw_pixel2d_img(t_img img, t_pt2d p, t_color c)
 	if ((p.x > 0) && (p.x < (img.lx / 4) && (p.y > 0) && (p.y < img.ly)) &&
 		!ft_get_pixel_img(img, p))
 	{
-		ft_memcpy(&(img.data[p.x * 4 + (p.y * img.lx)]), &i,
-			(size_t)(sizeof(int)));
+		//printf("%x\n",i);
+		*((int *)&img.data[p.x * 4 + (p.y * img.lx)]) = i;
 		return (1);
 	}
 	else
